@@ -16,6 +16,11 @@ import Quiz8 from "./pages/Quiz8";
 import Quiz9 from "./pages/Quiz9";
 import Quiz10 from "./pages/Quiz10";
 import Quiz11 from "./pages/Quiz11";
+import Quiz12 from "./pages/Quiz12";
+import Quiz13 from "./pages/Quiz13";
+import Quiz14 from "./pages/Quiz14";
+import Quiz15 from "./pages/Quiz15";
+import Quiz16 from "./pages/Quiz16";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -40,6 +45,11 @@ const App = () => (
             <Route path="/quiz9" element={<Quiz9 />} />
             <Route path="/quiz10" element={<Quiz10 />} />
             <Route path="/quiz11" element={<Quiz11 />} />
+            <Route path="/quiz12" element={<Quiz12 />} />
+            <Route path="/quiz13" element={<Quiz13 />} />
+            <Route path="/quiz14" element={<Quiz14 />} />
+            <Route path="/quiz15" element={<Quiz15 />} />
+            <Route path="/quiz16" element={<Quiz16 />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
