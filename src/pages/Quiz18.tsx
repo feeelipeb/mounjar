@@ -25,8 +25,7 @@ const Quiz18 = () => {
   const imcPosition = getImcPosition();
 
   const handleContinue = () => {
-    // Navigate to offer page
-    console.log("Navigate to offer page");
+    navigate("/quiz19");
   };
 
   return (
