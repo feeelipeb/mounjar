@@ -64,7 +64,7 @@ const Quiz20 = () => {
     title: "Hipertiroidismo: Não dar calmante coloca para sua família para ter efeito (o que não poderia)...",
     highlight: ""
   }];
-  return <div className="min-h-screen bg-background">
+  return <div className="min-h-screen bg-white">
       {/* Header */}
       <div className="flex justify-center py-4">
         <img src={logo} alt="Mounjaro de Pobre" className="h-14 w-auto" />
@@ -86,7 +86,7 @@ const Quiz20 = () => {
         </h1>
 
         {/* Before/After Hero */}
-        <div className="bg-white rounded-2xl shadow-lg p-4 mb-6">
+        <div className="bg-white rounded-2xl p-4 mb-6">
           {/* Headers */}
           <div className="grid grid-cols-2 gap-4 mb-2">
             <p className="text-center font-bold text-funnel-title">ANTES</p>
@@ -202,7 +202,7 @@ const Quiz20 = () => {
 
         {/* Benefits List */}
         <div className="space-y-3 mb-6">
-          {benefits.map((benefit, index) => <div key={index} className="flex items-start gap-3 bg-white border-gray-100 p-3 shadow-sm border-0 rounded-none">
+          {benefits.map((benefit, index) => <div key={index} className="flex items-start gap-3 bg-white p-3">
               <span className="text-2xl">{benefit.icon}</span>
               <div>
                 <p className="text-sm text-gray-700">{benefit.title}</p>
@@ -233,7 +233,7 @@ const Quiz20 = () => {
 
         {/* Carousel */}
         <div className="relative mb-6">
-          <div className="overflow-hidden rounded-2xl shadow-lg">
+          <div className="overflow-hidden rounded-2xl">
             <img src={carouselImages[currentSlide]} alt={`Prova social ${currentSlide + 1}`} className="w-full transition-opacity duration-500" />
           </div>
           {/* Carousel Dots */}
@@ -244,12 +244,12 @@ const Quiz20 = () => {
 
         {/* Before/After Transformation */}
         <div className="mb-6">
-          <img src={provaAnteDepois} alt="Transformação antes e depois" className="w-full rounded-2xl shadow-lg" />
+          <img src={provaAnteDepois} alt="Transformação antes e depois" className="w-full rounded-2xl" />
         </div>
 
         {/* Plans Image */}
         <div className="mb-6">
-          <img src={planos} alt="Planos disponíveis" className="w-full rounded-2xl shadow-lg" />
+          <img src={planos} alt="Planos disponíveis" className="w-full rounded-2xl" />
         </div>
 
         {/* CTA Button 2 */}
@@ -285,7 +285,7 @@ const Quiz20 = () => {
 
         {/* Reviews Section */}
         <div className="space-y-3 mb-8">
-          {reviews.map((review, index) => <div key={index} className="bg-white border border-gray-100 rounded-xl p-4 shadow-sm">
+          {reviews.map((review, index) => <div key={index} className="bg-white rounded-xl p-4">
               <div className="flex items-center gap-3 mb-2">
                 <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold">
                   {review.avatar}
