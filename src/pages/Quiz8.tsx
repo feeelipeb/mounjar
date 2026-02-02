@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import QuizLayout from "@/components/funnel/QuizLayout";
 import { Button } from "@/components/ui/button";
+import comoFunciona from "@/assets/como-funciona.png";
 
 const Quiz8 = () => {
   const navigate = useNavigate();
@@ -17,44 +18,12 @@ const Quiz8 = () => {
         <h2 className="text-xl font-bold text-funnel-accent">Resolve isso para você!</h2>
       </div>
 
-      <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 mb-6 animate-fade-in-up" style={{ animationDelay: "100ms" }}>
-        <h3 className="text-center text-lg font-bold text-[#1B8B4B] mb-6 uppercase tracking-wide">
-          Como funciona o<br />Mounjaro de Pobre
-        </h3>
-
-        {/* Ciclo visual simplificado */}
-        <div className="relative flex flex-col items-center gap-4">
-          {/* Você */}
-          <div className="flex items-center gap-2">
-            <div className="text-center">
-              <div className="text-4xl mb-1">🧍‍♀️</div>
-              <span className="text-sm font-medium text-funnel-title">Você</span>
-            </div>
-            <span className="text-2xl text-red-500">➡️</span>
-            <div className="text-center">
-              <div className="text-4xl mb-1">🍵</div>
-              <span className="text-sm font-medium text-funnel-title">Mounjaro Pronto</span>
-            </div>
-          </div>
-
-          {/* Seta para baixo */}
-          <span className="text-2xl text-red-500">⬇️</span>
-
-          {/* Queima de gordura */}
-          <div className="text-center">
-            <div className="text-4xl mb-1">🔥</div>
-            <span className="text-sm font-medium text-funnel-title">Mounjaro ativa a sua<br />queima de gordura</span>
-          </div>
-
-          {/* Seta para baixo */}
-          <span className="text-2xl text-red-500">⬇️</span>
-
-          {/* Seu objetivo */}
-          <div className="text-center">
-            <div className="text-4xl mb-1">💪</div>
-            <span className="text-sm font-medium text-funnel-title">Seu objetivo</span>
-          </div>
-        </div>
+      <div className="mb-6 animate-fade-in-up" style={{ animationDelay: "100ms" }}>
+        <img 
+          src={comoFunciona} 
+          alt="Como funciona o Mounjaro de Pobre" 
+          className="w-full max-w-sm mx-auto"
+        />
       </div>
 
       <p className="text-center text-sm mb-6 animate-fade-in-up" style={{ animationDelay: "200ms" }}>
