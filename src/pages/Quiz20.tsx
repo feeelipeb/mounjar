@@ -64,21 +64,61 @@ const Quiz20 = () => {
         </h1>
 
         {/* Before/After Hero */}
-        <div className="grid grid-cols-2 gap-2 mb-4">
-          <div className="text-center">
-            <span className="text-xs font-semibold text-gray-500 mb-1 block">ANTES</span>
+        <div className="bg-white rounded-2xl shadow-lg p-4 mb-6">
+          {/* Headers */}
+          <div className="grid grid-cols-2 gap-4 mb-2">
+            <p className="text-center font-bold text-funnel-title">ANTES</p>
+            <p className="text-center font-bold text-funnel-title">DEPOIS</p>
+          </div>
+          
+          {/* Images with chevron */}
+          <div className="relative grid grid-cols-2 gap-2 mb-4">
             <img src={heroAntes} alt="Antes" className="w-full rounded-lg" />
-            <div className="mt-2 flex items-center gap-1 justify-center">
-              <span className="text-red-500 text-xs">❌</span>
-              <span className="text-xs text-gray-600">Você está aqui nesse momento</span>
+            <img src={heroDepois} alt="Depois" className="w-full rounded-lg" />
+            {/* Chevron in center */}
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
+              <div className="flex items-center">
+                <ChevronRight className="w-8 h-8 text-gray-300" strokeWidth={3} />
+                <ChevronRight className="w-8 h-8 text-gray-300 -ml-5" strokeWidth={3} />
+              </div>
             </div>
           </div>
-          <div className="text-center">
-            <span className="text-xs font-semibold text-gray-500 mb-1 block">DEPOIS</span>
-            <img src={heroDepois} alt="Depois" className="w-full rounded-lg" />
-            <div className="mt-2 flex items-center gap-1 justify-center">
-              <span className="text-green-500 text-xs">✅</span>
-              <span className="text-xs text-gray-600">Você pode estar assim em dias</span>
+
+          {/* Text descriptions */}
+          <div className="grid grid-cols-2 gap-4 mb-3">
+            <p className="text-center text-sm text-funnel-title">
+              <em className="font-semibold">Esta é você antes</em> do Mounjaro de Pobre
+            </p>
+            <p className="text-center text-sm text-funnel-title">
+              E esta é <strong>você depois</strong> da nossa solução.
+            </p>
+          </div>
+
+          {/* Progress bars */}
+          <div className="grid grid-cols-2 gap-4 mb-4">
+            <div className="flex items-center gap-2">
+              <div className="flex-1 h-2 bg-gray-200 rounded-full overflow-hidden">
+                <div className="w-1/4 h-full bg-orange-500 rounded-full" />
+              </div>
+              <div className="w-3 h-3 rounded-full border-2 border-orange-500" />
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="flex-1 h-2 bg-gray-200 rounded-full overflow-hidden">
+                <div className="w-full h-full bg-primary rounded-full" />
+              </div>
+              <div className="w-3 h-3 rounded-full bg-primary" />
+            </div>
+          </div>
+
+          {/* Bottom descriptions */}
+          <div className="grid grid-cols-2 gap-4">
+            <div className="flex items-start gap-2">
+              <Check className="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" />
+              <p className="text-xs text-gray-500">Seu metabolismo está lento, fazendo você se sentir cansada.</p>
+            </div>
+            <div className="flex items-start gap-2">
+              <Check className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+              <p className="text-xs text-gray-500">Aqui, seu metabolismo estará funcionando de forma otimizada.</p>
             </div>
           </div>
         </div>
