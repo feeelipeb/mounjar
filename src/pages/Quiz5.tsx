@@ -16,8 +16,7 @@ const Quiz5 = () => {
 
   const handleSelect = (optionId: string) => {
     updateData("weightImpact", optionId);
-    // Navegar para próxima etapa ou página de resultados
-    console.log("Funil completo:", data);
+    navigate("/quiz6");
   };
 
   return (
