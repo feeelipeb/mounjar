@@ -8,21 +8,11 @@ const Quiz18 = () => {
   const navigate = useNavigate();
   const { data } = useFunnel();
 
-  // Calculate IMC
-  const weight = parseFloat(data.currentWeight) || 70;
-  const heightCm = parseFloat(data.height) || 165;
-  const heightM = heightCm / 100;
-  const imc = weight / (heightM * heightM);
-  const imcFormatted = imc.toFixed(2);
-
-  // Determine IMC position (0-100%)
-  const getImcPosition = () => {
-    if (imc < 18.5) return (imc / 18.5) * 33;
-    if (imc < 25) return 33 + ((imc - 18.5) / 6.5) * 34;
-    return 67 + Math.min(((imc - 25) / 10) * 33, 33);
-  };
-
-  const imcPosition = getImcPosition();
+  // Fixed IMC value close to "Sobrepeso" (overweight starts at 25)
+  const imcFormatted = "24.8";
+  
+  // Position at ~65% to be just before "Sobrepeso" zone
+  const imcPosition = 64;
 
   const handleContinue = () => {
     navigate("/quiz19");
