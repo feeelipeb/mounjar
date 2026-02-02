@@ -48,7 +48,7 @@ const Quiz20 = () => {
     }
   };
   const handleCTA = () => {
-    window.open("https://pay.kiwify.com.br/seu-link", "_blank");
+    window.open("https://pay.cakto.com.br/34ofwtu_624822", "_blank");
   };
   const reviews = [{
     name: "Rafaela Nascimento",
@@ -235,7 +235,7 @@ const Quiz20 = () => {
         </div>
 
         {/* CTA Button */}
-        <button onClick={handleCTA} className="w-full py-4 rounded-xl text-white font-bold text-lg shadow-lg transition-all duration-200 active:translate-y-1" style={{
+        <button onClick={handleCTA} className="w-full py-4 rounded-xl text-white font-bold text-lg shadow-lg transition-all duration-200 active:translate-y-1 animate-pulse-subtle" style={{
         background: "#1B8B4B",
         boxShadow: "0 4px 0 #0F5C2E"
       }}>
@@ -317,7 +317,7 @@ const Quiz20 = () => {
         </div>
 
         {/* CTA Button 2 */}
-        <button onClick={handleCTA} className="w-full py-4 rounded-xl text-white font-bold text-lg shadow-lg transition-all duration-200 active:translate-y-1 mb-4" style={{
+        <button onClick={handleCTA} className="w-full py-4 rounded-xl text-white font-bold text-lg shadow-lg transition-all duration-200 active:translate-y-1 mb-4 animate-pulse-subtle" style={{
         background: "#1B8B4B",
         boxShadow: "0 4px 0 #0F5C2E"
       }}>
@@ -362,7 +362,7 @@ const Quiz20 = () => {
         </div>
 
         {/* Final CTA */}
-        <button onClick={handleCTA} className="w-full py-4 rounded-xl text-white font-bold text-lg shadow-lg transition-all duration-200 active:translate-y-1" style={{
+        <button onClick={handleCTA} className="w-full py-4 rounded-xl text-white font-bold text-lg shadow-lg transition-all duration-200 active:translate-y-1 animate-pulse-subtle" style={{
         background: "#1B8B4B",
         boxShadow: "0 4px 0 #0F5C2E"
       }}>
