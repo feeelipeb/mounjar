@@ -38,8 +38,7 @@ const Quiz17 = () => {
   useEffect(() => {
     if (progress >= 100) {
       const timeout = setTimeout(() => {
-        // Navigate to next page (offer page)
-        console.log("Quiz17 completed - loading finished");
+        navigate("/quiz18");
       }, 500);
       return () => clearTimeout(timeout);
     }
