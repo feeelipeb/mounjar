@@ -56,31 +56,41 @@ const Quiz18 = () => {
           </h2>
 
           {/* IMC Card - matching reference exactly */}
-          <div className="bg-gradient-to-r from-[#4CAF50] via-[#8BC34A] via-[#FFEB3B] via-[#FF9800] to-[#F44336] rounded-2xl p-4 relative">
-            <div className="flex justify-between items-start mb-3">
+          <div 
+            className="rounded-2xl p-4 relative"
+            style={{
+              background: 'linear-gradient(to right, #22c55e 0%, #84cc16 25%, #eab308 40%, #f97316 55%, #dc2626 75%, #7f1d1d 100%)'
+            }}
+          >
+            <div className="flex justify-between items-start mb-4">
               <p className="text-sm font-bold text-white">
                 Seu IMC é: {imcFormatted}
               </p>
-              <div className="text-right flex flex-col items-end gap-1">
-                <span className="text-xs text-[#FF6B00] font-semibold flex items-center gap-1">
-                  ⚠️ Zona de Alerta
-                </span>
-                <span className="text-xs bg-white px-3 py-1 rounded-md text-gray-700 font-medium border border-gray-200">
-                  Você está aqui
+              <div className="text-right flex items-center gap-2">
+                <span className="text-yellow-300 text-lg">⚠️</span>
+                <span className="text-xs text-yellow-300 font-semibold">
+                  Zona de Alerta
                 </span>
               </div>
             </div>
 
-            {/* IMC Slider */}
-            <div className="relative mt-2 mb-3">
-              <div className="h-3 bg-gradient-to-r from-[#4CAF50] via-[#FFEB3B] to-[#F44336] rounded-full" />
+            {/* Você está aqui badge */}
+            <div className="flex justify-end mb-1">
+              <span className="text-xs bg-white px-3 py-1 rounded text-gray-700 font-medium shadow-sm">
+                Você está aqui
+              </span>
+            </div>
+
+            {/* IMC Slider - white bar */}
+            <div className="relative mb-3">
+              <div className="h-2 bg-white/30 rounded-full" />
               <div 
                 className="absolute top-1/2 -translate-y-1/2 w-5 h-5 bg-white rounded-full border-2 border-gray-300 shadow-lg"
                 style={{ left: `calc(${Math.min(imcPosition, 95)}% - 10px)` }}
               />
             </div>
 
-            <div className="flex justify-between text-xs font-semibold mt-1">
+            <div className="flex justify-between text-xs font-semibold mt-2">
               <span className="text-white">Abaixo do peso</span>
               <span className="text-white">Normal</span>
               <span className="text-white">Sobrepeso</span>
