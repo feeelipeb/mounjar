@@ -13,6 +13,7 @@ import prova4 from "@/assets/prova-4.jpg";
 import prova5 from "@/assets/prova-5.jpg";
 import planos from "@/assets/planos.jpg";
 import planos3 from "@/assets/planos-3.jpg";
+import planosNovo from "@/assets/planos-novo.jpg";
 import selosGarantia from "@/assets/selos-garantia.png";
 const Quiz20 = () => {
   const {
@@ -287,7 +288,7 @@ const Quiz20 = () => {
 
         {/* Plans Image */}
         <div className="mb-6">
-          <img src={planos} alt="Planos disponíveis" className="w-full rounded-2xl" />
+          <img src={planosNovo} alt="Planos disponíveis" className="w-full rounded-2xl" />
         </div>
 
         {/* CTA Button 2 */}
