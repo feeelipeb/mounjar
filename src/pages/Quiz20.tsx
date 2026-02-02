@@ -292,7 +292,7 @@ const Quiz20 = () => {
         </div>
 
         {/* Pricing Card */}
-        <div className="mb-6 rounded-full border-l-4 bg-white py-3 px-4 flex items-center justify-between shadow-sm" style={{ borderLeftColor: '#1B8B4B' }}>
+        <div className="mb-6 rounded-lg border-l-4 bg-white py-4 px-4 flex items-center justify-between shadow-sm" style={{ borderLeftColor: '#1B8B4B' }}>
           <div className="flex items-center gap-3">
             <div className="w-6 h-6 rounded-full border-2 flex items-center justify-center" style={{ borderColor: '#1B8B4B' }}>
               <Check className="w-4 h-4" style={{ color: '#1B8B4B' }} />
