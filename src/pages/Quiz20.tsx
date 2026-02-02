@@ -124,32 +124,36 @@ const Quiz20 = () => {
         </div>
 
         {/* Como funciona o Plano - Card */}
-        <div className="bg-white rounded-2xl p-4 mb-4 shadow-sm border-l-4 border-l-primary">
-          <h3 className="font-bold text-funnel-title flex items-center gap-2 mb-3">
-            <Check className="text-primary w-5 h-5" /> Como funciona o Plano?
+        <div className="bg-white rounded-2xl p-5 mb-4 shadow-md border-l-4" style={{ borderLeftColor: '#1B8B4B' }}>
+          <h3 className="font-bold text-[#1a365d] flex items-center gap-2 mb-3 text-base">
+            <div className="w-5 h-5 rounded-full border-2 border-[#1B8B4B] flex items-center justify-center">
+              <Check className="w-3 h-3 text-[#1B8B4B]" />
+            </div>
+            Como funciona o Plano?
           </h3>
-          <p className="text-sm text-primary font-semibold mb-2">
-            Com base nas suas informações pessoais e objetivos, criamos um plano 100% personalizado para você usar o Mounjaro de Pobre.
+          <p className="text-sm mb-2" style={{ color: '#1B8B4B' }}>
+            <strong>Com base nas suas informações pessoais e objetivos, criamos um plano 100% personalizado para você usar o Mounjaro de Pobre.</strong>
           </p>
-          <p className="text-sm text-gray-700">
+          <p className="text-sm text-gray-600">
             Nossa abordagem estratégica foi feita para que você consiga potencializar sua perda de peso em 4 semanas, respeitando seu estilo de vida, sua rotina e o que você gosta de comer.
           </p>
         </div>
 
         {/* Seu plano inclui - Card */}
-        <div className="bg-white rounded-2xl p-4 mb-6 shadow-sm border-l-4 border-l-primary">
-          <h3 className="font-bold text-funnel-title flex items-center gap-2 mb-4">
-            <Check className="text-gray-400 w-5 h-5" /> Seu plano inclui:
+        <div className="bg-white rounded-2xl p-5 mb-8 shadow-md border-l-4" style={{ borderLeftColor: '#1B8B4B' }}>
+          <h3 className="font-bold text-[#1a365d] flex items-center gap-2 mb-4 text-base">
+            <Check className="w-5 h-5 text-gray-400" />
+            Seu plano inclui:
           </h3>
           <div className="space-y-4 text-sm text-gray-700">
             <p>
-              <strong>Como usar o Mounjaro do Jeito Certo:</strong> Baseado nas pesquisas mais recentes de universidades famosas como Havard, desenvolvemos o Protocolo Mounjaro de Pobre, a forma mais eficaz e segura de usar o Mounjaro de Pobre para perder peso sem que você perca músculos ou sinta muita fome.
+              <strong className="text-[#1a365d]">Como usar o Mounjaro do Jeito Certo:</strong> Baseado nas pesquisas mais recentes de universidades famosas como Havard, desenvolvemos o Protocolo Mounjaro de Pobre, a forma mais eficaz e segura de usar o Mounjaro de Pobre para perder peso sem que você perca músculos ou sinta muita fome.
             </p>
             <p>
-              <strong>Definição de metas diárias:</strong> para você se manter no caminho certo.
+              <strong className="text-[#1a365d]">Definição de metas diárias:</strong> para você se manter no caminho certo.
             </p>
             <p>
-              <strong>Planilha de acompanhamento:</strong> Saiba exatamente quanto você está evoluindo.
+              <strong className="text-[#1a365d]">Planilha de acompanhamento:</strong> Saiba exatamente quanto você está evoluindo.
             </p>
           </div>
           <p className="text-sm font-bold text-blue-600 mt-4">
@@ -158,9 +162,10 @@ const Quiz20 = () => {
         </div>
 
         {/* Benefits for You */}
-        <p className="text-center text-lg font-semibold text-funnel-title mb-6">
-          Ao Garantir Seu Mounjaro de Pobre Hoje, <span className="text-primary">Você Recebe</span><br />
-          <span className="text-primary">Todos os Bônus de Presente!</span>
+        <p className="text-center text-lg font-bold mb-8">
+          <span className="text-[#1a365d]">Ao Garantir Seu Mounjaro de Pobre Hoje,</span>{" "}
+          <span style={{ color: '#1B8B4B' }}>Você Recebe</span><br />
+          <span style={{ color: '#1B8B4B' }}>Todos os Bônus de Presente!</span>
         </p>
 
         {/* Benefits List */}
