@@ -16,8 +16,7 @@ const Quiz16 = () => {
 
   const handleSelect = (water: string) => {
     updateData("waterIntake", water);
-    // Navegar para próxima etapa
-    console.log("Quiz16 completed");
+    navigate("/quiz17");
   };
 
   return (
