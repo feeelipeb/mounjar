@@ -16,6 +16,7 @@ interface FunnelData {
   routine: string;
   sleepHours: string;
   waterIntake: string;
+  dreamBody: string;
 }
 
 interface FunnelContextType {
@@ -42,6 +43,7 @@ export const FunnelProvider = ({ children }: { children: ReactNode }) => {
     routine: "",
     sleepHours: "",
     waterIntake: "",
+    dreamBody: "",
   });
 
   const updateData = (key: keyof FunnelData, value: string) => {
