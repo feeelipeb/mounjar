@@ -14,6 +14,36 @@ export type Database = {
   }
   public: {
     Tables: {
+      button_clicks: {
+        Row: {
+          button_id: string
+          button_label: string | null
+          created_at: string
+          destination_url: string | null
+          id: string
+          page_path: string
+          visitor_id: string
+        }
+        Insert: {
+          button_id: string
+          button_label?: string | null
+          created_at?: string
+          destination_url?: string | null
+          id?: string
+          page_path: string
+          visitor_id: string
+        }
+        Update: {
+          button_id?: string
+          button_label?: string | null
+          created_at?: string
+          destination_url?: string | null
+          id?: string
+          page_path?: string
+          visitor_id?: string
+        }
+        Relationships: []
+      }
       page_views: {
         Row: {
           created_at: string
