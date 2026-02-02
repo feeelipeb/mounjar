@@ -203,7 +203,7 @@ const Quiz20 = () => {
               <strong className="text-[#1a365d]">Planilha de acompanhamento:</strong> Saiba exatamente quanto você está evoluindo.
             </p>
           </div>
-          <p className="text-sm font-bold text-blue-600 mt-4">
+          <p className="text-sm font-bold mt-4" style={{ color: '#1B8B4B' }}>
             3 Bônus Exclusivos + um Mega PRESENTE SURPRESA
           </p>
         </div>
