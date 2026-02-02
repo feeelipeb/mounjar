@@ -11,8 +11,8 @@ const Quiz18 = () => {
   // Fixed IMC value close to "Sobrepeso" (overweight starts at 25)
   const imcFormatted = "24.8";
   
-  // Position at ~65% to be just before "Sobrepeso" zone
-  const imcPosition = 64;
+  // Position at ~75% to be very close to "Sobrepeso" zone
+  const imcPosition = 75;
 
   const handleContinue = () => {
     navigate("/quiz19");
