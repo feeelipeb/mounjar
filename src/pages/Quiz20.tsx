@@ -332,7 +332,7 @@ const Quiz20 = () => {
             Se ele não atender às suas expectativas nos primeiros 30 dias após a compra, nós reembolsaremos todo o valor que você pagou, sem fazer perguntas.
           </p>
           <p className="text-xs text-primary font-semibold mb-6">
-            📲 Em caso de qualquer dúvida entre em contato pelo e-mail que retornaremos.
+            📲 Basta enviar um e-mail para o suporte em mounjarodepobre@gmail.com
           </p>
         </div>
 
