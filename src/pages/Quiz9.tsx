@@ -63,8 +63,8 @@ const Quiz9 = () => {
             <div
               className={`w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all ${
                 selectedBenefits.includes(benefit.id)
-                  ? "border-funnel-accent bg-funnel-accent"
-                  : "border-gray-300"
+                  ? "border-[#1B8B4B] bg-[#1B8B4B]"
+                  : "border-[#1B8B4B]"
               }`}
             >
               {selectedBenefits.includes(benefit.id) && (

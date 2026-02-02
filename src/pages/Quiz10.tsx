@@ -1,6 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import QuizLayout from "@/components/funnel/QuizLayout";
 import { Button } from "@/components/ui/button";
+import testimonialImage from "@/assets/testimonial-antes-depois.jpg";
+import perfilFernanda from "@/assets/perfil-fernanda.jpg";
 
 const Quiz10 = () => {
   const navigate = useNavigate();
@@ -21,47 +23,36 @@ const Quiz10 = () => {
       </div>
 
       {/* Before/After Image */}
-      <div className="relative rounded-2xl overflow-hidden mb-4 animate-fade-in-up" style={{ animationDelay: "100ms" }}>
-        <div className="relative">
-          <img 
-            src="https://images.unsplash.com/photo-1594381898411-846e7d193883?w=400&h=300&fit=crop" 
-            alt="Antes" 
-            className="w-1/2 h-48 object-cover inline-block"
-          />
-          <img 
-            src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=300&fit=crop" 
-            alt="Depois" 
-            className="w-1/2 h-48 object-cover inline-block"
-          />
-          <div className="absolute bottom-4 left-4 bg-red-500 text-white px-3 py-1 rounded-lg font-bold text-sm">
-            ANTES
-          </div>
-          <div className="absolute bottom-4 right-4 bg-[#1B8B4B] text-white px-3 py-1 rounded-lg font-bold text-sm">
-            DEPOIS
-          </div>
-        </div>
+      <div className="rounded-2xl overflow-hidden mb-4 animate-fade-in-up" style={{ animationDelay: "100ms" }}>
+        <img 
+          src={testimonialImage}
+          alt="Antes e Depois - Fernanda" 
+          className="w-full h-auto rounded-2xl"
+        />
       </div>
 
       {/* Testimonial Card */}
-      <div className="bg-white rounded-2xl p-4 shadow-sm border border-gray-100 mb-6 animate-fade-in-up" style={{ animationDelay: "200ms" }}>
-        <div className="flex items-center gap-3 mb-3">
-          <div className="w-10 h-10 rounded-full bg-gradient-to-br from-orange-400 to-red-500 flex items-center justify-center">
-            <span className="text-white text-lg">👩</span>
-          </div>
+      <div className="bg-white rounded-2xl p-5 shadow-sm border border-gray-100 mb-6 animate-fade-in-up" style={{ animationDelay: "200ms" }}>
+        <div className="flex items-center gap-3 mb-4">
+          <img 
+            src={perfilFernanda}
+            alt="Fernanda Oliveira"
+            className="w-12 h-12 rounded-full object-cover"
+          />
           <div>
             <h3 className="font-bold text-funnel-title">Fernanda Oliveira</h3>
             <p className="text-xs text-funnel-subtitle">Porto Alegre, RS</p>
           </div>
         </div>
         
-        <p className="text-sm text-funnel-title leading-relaxed mb-3">
+        <p className="text-sm text-funnel-title leading-relaxed mb-4">
           Eu já tinha tentado de tudo para emagrecer, mas nada funcionava. Depois de incluir a fórmula do Mounjaro de pobre na minha rotina, perdi 11kg sem mudar nada na minha alimentação! O mais incrível é que minha fome e ansiedade diminuíram naturalmente!
         </p>
 
         {/* Stars */}
-        <div className="flex gap-1">
+        <div className="flex gap-0.5">
           {[1, 2, 3, 4, 5].map((star) => (
-            <span key={star} className="text-yellow-400 text-lg">⭐</span>
+            <span key={star} className="text-yellow-400 text-xl">⭐</span>
           ))}
         </div>
       </div>
