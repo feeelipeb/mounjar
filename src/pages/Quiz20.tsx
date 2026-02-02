@@ -86,7 +86,7 @@ const Quiz20 = () => {
         </h1>
 
         {/* Before/After Hero */}
-        <div className="bg-white rounded-2xl p-4 mb-6">
+        <div className="bg-white rounded-2xl p-4 mb-6 border border-gray-100">
           {/* Headers */}
           <div className="grid grid-cols-2 gap-4 mb-2">
             <p className="text-center font-bold text-funnel-title">ANTES</p>
@@ -96,13 +96,12 @@ const Quiz20 = () => {
           {/* Images with chevron */}
           <div className="relative grid grid-cols-2 gap-2 mb-4">
             <img src={heroAntes} alt="Antes" className="w-full rounded-lg" />
+            {/* Vertical separator */}
+            <div className="absolute left-1/2 top-0 bottom-0 w-px bg-gray-200 -translate-x-1/2" />
             <img src={heroDepois} alt="Depois" className="w-full rounded-lg" />
             {/* Chevron in center */}
-            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
-              <div className="flex items-center">
-                <ChevronRight className="w-8 h-8 text-gray-300" strokeWidth={3} />
-                <ChevronRight className="w-8 h-8 text-gray-300 -ml-5" strokeWidth={3} />
-              </div>
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 bg-white rounded-full p-1">
+              <ChevronRight className="w-5 h-5 text-gray-300" strokeWidth={3} />
             </div>
           </div>
 
@@ -146,8 +145,9 @@ const Quiz20 = () => {
         </div>
 
         {/* Como funciona o Plano - Card */}
-        <div className="bg-white rounded-2xl p-5 mb-4 shadow-md border-l-4" style={{
-        borderLeftColor: '#1B8B4B'
+        <div className="rounded-2xl p-5 mb-4 border-l-4" style={{
+        borderLeftColor: '#1B8B4B',
+        backgroundColor: '#f8faf9'
       }}>
           <h3 className="font-bold text-[#1a365d] flex items-center gap-2 mb-3 text-base">
             <div className="w-5 h-5 rounded-full border-2 border-[#1B8B4B] flex items-center justify-center">
@@ -166,8 +166,9 @@ const Quiz20 = () => {
         </div>
 
         {/* Seu plano inclui - Card */}
-        <div className="bg-white rounded-2xl p-5 mb-8 shadow-md border-l-4" style={{
-        borderLeftColor: '#1B8B4B'
+        <div className="rounded-2xl p-5 mb-8 border-l-4" style={{
+        borderLeftColor: '#1B8B4B',
+        backgroundColor: '#f8faf9'
       }}>
           <h3 className="font-bold text-[#1a365d] flex items-center gap-2 mb-4 text-base">
             <Check className="w-5 h-5 text-gray-400" />
