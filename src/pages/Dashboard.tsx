@@ -5,7 +5,19 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell } from 'recharts';
-import { LogOut, Users, TrendingDown, RefreshCw } from 'lucide-react';
+import { LogOut, Users, TrendingDown, RefreshCw, MousePointer, Trash2 } from 'lucide-react';
+import { useToast } from '@/hooks/use-toast';
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
 
 interface PageStats {
   page: string;
@@ -17,6 +29,13 @@ interface PageStats {
 interface DropoffData {
   transition: string;
   dropoff: number;
+}
+
+interface ButtonClickStats {
+  buttonId: string;
+  label: string;
+  count: number;
+  uniqueVisitors: number;
 }
 
 const FUNNEL_PAGES = [
@@ -46,9 +65,12 @@ const FUNNEL_PAGES = [
 const Dashboard = () => {
   const [stats, setStats] = useState<PageStats[]>([]);
   const [dropoffs, setDropoffs] = useState<DropoffData[]>([]);
+  const [buttonClicks, setButtonClicks] = useState<ButtonClickStats[]>([]);
   const [loading, setLoading] = useState(true);
   const [totalVisitors, setTotalVisitors] = useState(0);
+  const [totalButtonClicks, setTotalButtonClicks] = useState(0);
   const navigate = useNavigate();
+  const { toast } = useToast();
 
   useEffect(() => {
     const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
@@ -71,31 +93,37 @@ const Dashboard = () => {
   const fetchStats = async () => {
     setLoading(true);
 
-    const { data, error } = await supabase
+    // Buscar page views
+    const { data: pageViewsData, error: pageViewsError } = await supabase
       .from('page_views')
       .select('page_path, visitor_id');
 
-    if (error) {
-      console.error('Error fetching stats:', error);
-      setLoading(false);
-      return;
+    if (pageViewsError) {
+      console.error('Error fetching page views:', pageViewsError);
     }
 
-    // Contar visitantes únicos por página
+    // Buscar button clicks
+    const { data: buttonClicksData, error: buttonClicksError } = await supabase
+      .from('button_clicks')
+      .select('button_id, button_label, visitor_id');
+
+    if (buttonClicksError) {
+      console.error('Error fetching button clicks:', buttonClicksError);
+    }
+
+    // Processar page views
     const pageVisitors: Record<string, Set<string>> = {};
     
-    data?.forEach((view) => {
+    pageViewsData?.forEach((view) => {
       if (!pageVisitors[view.page_path]) {
         pageVisitors[view.page_path] = new Set();
       }
       pageVisitors[view.page_path].add(view.visitor_id);
     });
 
-    // Pegar contagem da primeira página como base
     const firstPageCount = pageVisitors['/']?.size || 0;
     setTotalVisitors(firstPageCount);
 
-    // Calcular stats para cada página
     const pageStats: PageStats[] = FUNNEL_PAGES.map((page) => {
       const count = pageVisitors[page.path]?.size || 0;
       const retention = firstPageCount > 0 ? (count / firstPageCount) * 100 : 0;
@@ -109,7 +137,7 @@ const Dashboard = () => {
 
     setStats(pageStats);
 
-    // Calcular dropoffs entre páginas
+    // Calcular dropoffs
     const dropoffData: DropoffData[] = [];
     for (let i = 0; i < pageStats.length - 1; i++) {
       const current = pageStats[i];
@@ -126,11 +154,77 @@ const Dashboard = () => {
       }
     }
 
-    // Ordenar por maior dropoff
     dropoffData.sort((a, b) => b.dropoff - a.dropoff);
-    setDropoffs(dropoffData.slice(0, 10)); // Top 10 piores
+    setDropoffs(dropoffData.slice(0, 10));
+
+    // Processar button clicks
+    const buttonStats: Record<string, { label: string; clicks: number; visitors: Set<string> }> = {};
+    
+    buttonClicksData?.forEach((click) => {
+      if (!buttonStats[click.button_id]) {
+        buttonStats[click.button_id] = {
+          label: click.button_label || click.button_id,
+          clicks: 0,
+          visitors: new Set(),
+        };
+      }
+      buttonStats[click.button_id].clicks++;
+      buttonStats[click.button_id].visitors.add(click.visitor_id);
+    });
+
+    const buttonClickStats: ButtonClickStats[] = Object.entries(buttonStats).map(([id, data]) => ({
+      buttonId: id,
+      label: data.label,
+      count: data.clicks,
+      uniqueVisitors: data.visitors.size,
+    }));
+
+    buttonClickStats.sort((a, b) => b.count - a.count);
+    setButtonClicks(buttonClickStats);
+    setTotalButtonClicks(buttonClicksData?.length || 0);
 
     setLoading(false);
+  };
+
+  const handleReset = async () => {
+    setLoading(true);
+    
+    // Deletar todos os page views
+    const { error: pageViewsError } = await supabase
+      .from('page_views')
+      .delete()
+      .neq('id', '00000000-0000-0000-0000-000000000000'); // Hack para deletar todos
+
+    if (pageViewsError) {
+      toast({
+        title: 'Erro ao resetar page views',
+        description: pageViewsError.message,
+        variant: 'destructive',
+      });
+    }
+
+    // Deletar todos os button clicks
+    const { error: buttonClicksError } = await supabase
+      .from('button_clicks')
+      .delete()
+      .neq('id', '00000000-0000-0000-0000-000000000000');
+
+    if (buttonClicksError) {
+      toast({
+        title: 'Erro ao resetar button clicks',
+        description: buttonClicksError.message,
+        variant: 'destructive',
+      });
+    }
+
+    if (!pageViewsError && !buttonClicksError) {
+      toast({
+        title: 'Métricas resetadas',
+        description: 'Todas as métricas foram resetadas com sucesso.',
+      });
+    }
+
+    fetchStats();
   };
 
   const handleLogout = async () => {
@@ -139,10 +233,10 @@ const Dashboard = () => {
   };
 
   const getBarColor = (dropoff: number) => {
-    if (dropoff >= 50) return '#ef4444'; // red
-    if (dropoff >= 30) return '#f97316'; // orange
-    if (dropoff >= 20) return '#eab308'; // yellow
-    return '#22c55e'; // green
+    if (dropoff >= 50) return '#ef4444';
+    if (dropoff >= 30) return '#f97316';
+    if (dropoff >= 20) return '#eab308';
+    return '#22c55e';
   };
 
   return (
@@ -154,11 +248,33 @@ const Dashboard = () => {
             <h1 className="text-3xl font-bold">Dashboard de Métricas</h1>
             <p className="text-muted-foreground">Análise do funil de conversão</p>
           </div>
-          <div className="flex gap-2">
+          <div className="flex gap-2 flex-wrap">
             <Button variant="outline" onClick={fetchStats} disabled={loading}>
               <RefreshCw className={`h-4 w-4 mr-2 ${loading ? 'animate-spin' : ''}`} />
               Atualizar
             </Button>
+            <AlertDialog>
+              <AlertDialogTrigger asChild>
+                <Button variant="outline" className="text-red-500 border-red-500 hover:bg-red-50">
+                  <Trash2 className="h-4 w-4 mr-2" />
+                  Resetar
+                </Button>
+              </AlertDialogTrigger>
+              <AlertDialogContent>
+                <AlertDialogHeader>
+                  <AlertDialogTitle>Resetar todas as métricas?</AlertDialogTitle>
+                  <AlertDialogDescription>
+                    Essa ação não pode ser desfeita. Todos os dados de page views e cliques em botões serão permanentemente deletados.
+                  </AlertDialogDescription>
+                </AlertDialogHeader>
+                <AlertDialogFooter>
+                  <AlertDialogCancel>Cancelar</AlertDialogCancel>
+                  <AlertDialogAction onClick={handleReset} className="bg-red-500 hover:bg-red-600">
+                    Resetar Tudo
+                  </AlertDialogAction>
+                </AlertDialogFooter>
+              </AlertDialogContent>
+            </AlertDialog>
             <Button variant="destructive" onClick={handleLogout}>
               <LogOut className="h-4 w-4 mr-2" />
               Sair
@@ -167,7 +283,7 @@ const Dashboard = () => {
         </div>
 
         {/* Cards de resumo */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
           <Card>
             <CardHeader className="flex flex-row items-center justify-between pb-2">
               <CardTitle className="text-sm font-medium">Total de Visitantes</CardTitle>
@@ -194,6 +310,18 @@ const Dashboard = () => {
           </Card>
           <Card>
             <CardHeader className="flex flex-row items-center justify-between pb-2">
+              <CardTitle className="text-sm font-medium">Cliques em Botões</CardTitle>
+              <MousePointer className="h-4 w-4 text-muted-foreground" />
+            </CardHeader>
+            <CardContent>
+              <div className="text-2xl font-bold">{totalButtonClicks}</div>
+              <p className="text-xs text-muted-foreground">
+                {buttonClicks.length} botões diferentes
+              </p>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardHeader className="flex flex-row items-center justify-between pb-2">
               <CardTitle className="text-sm font-medium">Maior Dropoff</CardTitle>
               <TrendingDown className="h-4 w-4 text-red-500" />
             </CardHeader>
@@ -207,6 +335,34 @@ const Dashboard = () => {
             </CardContent>
           </Card>
         </div>
+
+        {/* Cliques em Botões */}
+        {buttonClicks.length > 0 && (
+          <Card>
+            <CardHeader>
+              <CardTitle>Cliques em Botões de Redirecionamento</CardTitle>
+              <CardDescription>
+                Botões que levam para páginas externas (checkout, etc.)
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-4">
+                {buttonClicks.map((btn) => (
+                  <div key={btn.buttonId} className="flex items-center justify-between p-3 bg-muted rounded-lg">
+                    <div>
+                      <p className="font-medium">{btn.label}</p>
+                      <p className="text-sm text-muted-foreground">ID: {btn.buttonId}</p>
+                    </div>
+                    <div className="text-right">
+                      <p className="text-lg font-bold">{btn.count} cliques</p>
+                      <p className="text-sm text-muted-foreground">{btn.uniqueVisitors} visitantes únicos</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+        )}
 
         {/* Gráfico de Dropoffs */}
         <Card>

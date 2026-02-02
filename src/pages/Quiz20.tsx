@@ -1,5 +1,6 @@
 import { useState, useRef } from "react";
 import { useFunnel } from "@/contexts/FunnelContext";
+import { useButtonTracking } from "@/hooks/useButtonTracking";
 import { Check, Star, Shield, ThumbsUp, Lock, ChevronLeft, ChevronRight } from "lucide-react";
 import logo from "@/assets/logo.webp";
 import heroAntes from "@/assets/hero-antes.png";
@@ -23,6 +24,7 @@ const Quiz20 = () => {
   const {
     data
   } = useFunnel();
+  const { trackButtonClick } = useButtonTracking();
   const name = data.name || "Você";
   const [currentSlide, setCurrentSlide] = useState(0);
   const carouselImages = [carrosselProva1, carrosselProva2, prova3, prova4, prova5];
@@ -48,6 +50,7 @@ const Quiz20 = () => {
     }
   };
   const handleCTA = () => {
+    trackButtonClick('cta_checkout', 'Quero Começar Hoje!', 'https://pay.cakto.com.br/34ofwtu_624822');
     window.open("https://pay.cakto.com.br/34ofwtu_624822", "_blank");
   };
   const reviews = [{
