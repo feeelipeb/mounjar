@@ -101,8 +101,9 @@ const Quiz20 = () => {
       {/* Progress Bar */}
       <div className="px-4 mb-6">
         <div className="w-full max-w-md mx-auto h-3 bg-gray-200 rounded-full overflow-hidden">
-          <div className="h-full bg-primary rounded-full" style={{
-          width: "100%"
+          <div className="h-full rounded-full" style={{
+          width: "100%",
+          backgroundColor: '#1B8B4B'
         }} />
         </div>
       </div>
