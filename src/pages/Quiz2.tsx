@@ -23,7 +23,7 @@ const Quiz2 = () => {
   };
 
   return (
-    <QuizLayout progress={40}>
+    <QuizLayout progress={10}>
       <div className="text-center mb-8 animate-fade-in-up">
         <h1 className="text-xl md:text-2xl font-bold text-funnel-title">
           Como você classificaria seu{" "}

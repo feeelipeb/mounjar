@@ -20,7 +20,7 @@ const Quiz15 = () => {
   };
 
   return (
-    <QuizLayout progress={65}>
+    <QuizLayout progress={75}>
       <div className="text-center mb-2 animate-fade-in-up">
         <h1 className="text-xl font-bold text-funnel-title">
           Quantas <span className="text-funnel-accent">horas de sono</span> você tem por noite?

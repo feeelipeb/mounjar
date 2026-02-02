@@ -23,7 +23,7 @@ const Quiz11 = () => {
   };
 
   return (
-    <QuizLayout progress={95}>
+    <QuizLayout progress={55}>
       <div className="text-center mb-2 animate-fade-in-up">
         <h1 className="text-xl font-bold text-funnel-title">
           Qual é o seu <span className="text-funnel-accent">peso atual?</span>

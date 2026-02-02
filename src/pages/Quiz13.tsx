@@ -23,7 +23,7 @@ const Quiz13 = () => {
   };
 
   return (
-    <QuizLayout progress={55}>
+    <QuizLayout progress={65}>
       <div className="text-center mb-2 animate-fade-in-up">
         <h1 className="text-xl font-bold text-funnel-title">
           Qual é o seu objetivo de peso (desejado)?

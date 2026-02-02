@@ -33,7 +33,7 @@ const Quiz7 = () => {
   };
 
   return (
-    <QuizLayout progress={60}>
+    <QuizLayout progress={35}>
       <div className="text-center mb-8 animate-fade-in-up">
         <h1 className="text-xl md:text-2xl font-bold text-funnel-title">
           O que mais te <span className="text-funnel-accent">impede</span>

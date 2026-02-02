@@ -20,7 +20,7 @@ const Quiz16 = () => {
   };
 
   return (
-    <QuizLayout progress={70}>
+    <QuizLayout progress={80}>
       <div className="text-center mb-2 animate-fade-in-up">
         <h1 className="text-xl font-bold text-funnel-title">
           Quantos <span className="text-funnel-accent">copos de água</span> você bebe por dia?

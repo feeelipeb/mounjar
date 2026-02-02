@@ -12,7 +12,7 @@ const Quiz10 = () => {
   };
 
   return (
-    <QuizLayout progress={85}>
+    <QuizLayout progress={50}>
       <div className="text-center mb-4 animate-fade-in-up">
         <h1 className="text-xl font-bold text-funnel-title">
           🔥 Histórias Reais de Transformação!
