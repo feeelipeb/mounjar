@@ -25,7 +25,7 @@ const Quiz19 = () => {
           Qual o <span className="underline">corpo</span> dos
         </h1>
         <h1 className="text-2xl md:text-3xl font-bold mb-4">
-          seus <span className="text-primary">sonhos</span>?
+          seus <span className="text-[#1B8B4B]">sonhos</span>?
         </h1>
         <p className="text-sm text-muted-foreground underline mb-8">
           Escolha a opção abaixo:
