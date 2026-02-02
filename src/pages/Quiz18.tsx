@@ -59,7 +59,7 @@ const Quiz18 = () => {
           <div 
             className="rounded-2xl p-4 relative"
             style={{
-              background: 'linear-gradient(to right, #166534 0%, #15803d 15%, #22c55e 30%, #eab308 50%, #f97316 65%, #dc2626 80%, #7f1d1d 100%)'
+              background: 'linear-gradient(to right, #196737, #d71514)'
             }}
           >
             <div className="flex justify-between items-start mb-4">
