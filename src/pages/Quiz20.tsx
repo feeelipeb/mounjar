@@ -123,39 +123,44 @@ const Quiz20 = () => {
           </div>
         </div>
 
-        {/* What you'll receive - Green Card */}
-        <div className="bg-green-50 border border-green-200 rounded-2xl p-4 mb-4">
+        {/* Como funciona o Plano - Card */}
+        <div className="bg-white rounded-2xl p-4 mb-4 shadow-sm border-l-4 border-l-primary">
           <h3 className="font-bold text-funnel-title flex items-center gap-2 mb-3">
-            <span className="text-primary">📦</span> O que você irá receber?
+            <Check className="text-primary w-5 h-5" /> Como funciona o Plano?
           </h3>
-          <p className="text-sm text-gray-700 mb-3">
-            Você terá acesso ao <strong>Protocolo Completo do Mounjaro de Pobre</strong>, que é um passo a passo feito para você ter resultados em até 72h, simples de usar e funciona para qualquer mulher, em qualquer idade.
+          <p className="text-sm text-primary font-semibold mb-2">
+            Com base nas suas informações pessoais e objetivos, criamos um plano 100% personalizado para você usar o Mounjaro de Pobre.
           </p>
           <p className="text-sm text-gray-700">
-            O protocolo "Mounjaro de Pobre" é composto por <strong>4 Chás Naturais</strong> que aceleram seu metabolismo e queimam gordura localizada de forma natural e saudável.
+            Nossa abordagem estratégica foi feita para que você consiga potencializar sua perda de peso em 4 semanas, respeitando seu estilo de vida, sua rotina e o que você gosta de comer.
           </p>
         </div>
 
-        {/* Personalized Protocol Card */}
-        <div className="bg-white border border-gray-200 rounded-2xl p-4 mb-4 shadow-sm">
-          <h3 className="font-bold text-funnel-title flex items-center gap-2 mb-3">
-            <Check className="text-primary w-5 h-5" /> Seu protocolo personalizado
+        {/* Seu plano inclui - Card */}
+        <div className="bg-white rounded-2xl p-4 mb-6 shadow-sm border-l-4 border-l-primary">
+          <h3 className="font-bold text-funnel-title flex items-center gap-2 mb-4">
+            <Check className="text-gray-400 w-5 h-5" /> Seu plano inclui:
           </h3>
-          <p className="text-sm text-gray-700 mb-2">
-            <strong>Criamos um Plano Personalizado de Emagrecimento</strong> para o seu metabolismo de acordo com as suas respostas.
-          </p>
-          <p className="text-sm text-gray-700 mb-3">
-            Assim que se tornar aluna das outras alunas você terá acesso a esse material exclusivo no portal da aluna.
-          </p>
-          <p className="text-sm font-semibold text-primary">
-            📲 Você receberá tudo pelo WhatsApp em até 2 min após o pagamento!
+          <div className="space-y-4 text-sm text-gray-700">
+            <p>
+              <strong>Como usar o Mounjaro do Jeito Certo:</strong> Baseado nas pesquisas mais recentes de universidades famosas como Havard, desenvolvemos o Protocolo Mounjaro de Pobre, a forma mais eficaz e segura de usar o Mounjaro de Pobre para perder peso sem que você perca músculos ou sinta muita fome.
+            </p>
+            <p>
+              <strong>Definição de metas diárias:</strong> para você se manter no caminho certo.
+            </p>
+            <p>
+              <strong>Planilha de acompanhamento:</strong> Saiba exatamente quanto você está evoluindo.
+            </p>
+          </div>
+          <p className="text-sm font-bold text-blue-600 mt-4">
+            3 Bônus Exclusivos + um Mega PRESENTE SURPRESA
           </p>
         </div>
 
         {/* Benefits for You */}
-        <p className="text-center text-sm text-muted-foreground underline mb-4">
-          Ao Garantir Seu Mounjaro de Pobre hoje, <span className="text-primary font-semibold">Você Receberá</span><br />
-          Todos os Métodos de Presente!!!
+        <p className="text-center text-lg font-semibold text-funnel-title mb-6">
+          Ao Garantir Seu Mounjaro de Pobre Hoje, <span className="text-primary">Você Recebe</span><br />
+          <span className="text-primary">Todos os Bônus de Presente!</span>
         </p>
 
         {/* Benefits List */}
