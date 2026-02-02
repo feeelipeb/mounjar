@@ -41,7 +41,7 @@ const Quiz4 = () => {
         <Button
           onClick={handleContinue}
           disabled={!name.trim()}
-          className="w-full py-6 text-lg font-semibold bg-funnel-accent hover:bg-funnel-accent/90 rounded-xl"
+          className="w-full py-6 text-lg font-semibold bg-[#1B8B4B] hover:bg-[#167A40] rounded-xl shadow-[0_4px_0_0_#0F5C2E] active:shadow-[0_2px_0_0_#0F5C2E] active:translate-y-[2px] transition-all disabled:opacity-50 disabled:shadow-[0_4px_0_0_#0F5C2E]/50"
         >
           Continuar
         </Button>
