@@ -7,8 +7,7 @@ const Quiz8 = () => {
   const navigate = useNavigate();
 
   const handleContinue = () => {
-    // Navegar para próxima etapa
-    console.log("Protocolo apresentado, continuar para próxima etapa");
+    navigate("/quiz9");
   };
 
   return (
