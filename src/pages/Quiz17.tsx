@@ -95,10 +95,13 @@ const Quiz17 = () => {
 
         {/* Progress Bar */}
         <div className="w-full mb-2">
-          <div className="w-full h-10 bg-gray-200 rounded-full overflow-hidden">
+          <div className="w-full h-7 bg-gray-200 rounded-full overflow-hidden">
             <div
-              className="h-full bg-funnel-accent transition-all duration-100 ease-linear rounded-full flex items-center justify-center"
-              style={{ width: `${progress}%` }}
+              className="h-full transition-all duration-100 ease-linear rounded-full flex items-center justify-center"
+              style={{ 
+                width: `${progress}%`,
+                backgroundColor: '#1B8B4B'
+              }}
             >
               <span className="text-white font-bold text-sm">
                 {Math.round(progress)}%
@@ -132,9 +135,10 @@ const Quiz17 = () => {
           {carouselImages.map((_, index) => (
             <button
               key={index}
-              className={`w-2 h-2 rounded-full transition-colors ${
-                currentSlide === index ? "bg-funnel-accent" : "bg-gray-300"
-              }`}
+              className="w-2 h-2 rounded-full transition-colors"
+              style={{ 
+                backgroundColor: currentSlide === index ? '#1B8B4B' : '#D1D5DB' 
+              }}
               onClick={() => emblaApi?.scrollTo(index)}
             />
           ))}
