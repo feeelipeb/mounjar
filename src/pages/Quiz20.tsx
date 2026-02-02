@@ -248,12 +248,12 @@ const Quiz20 = () => {
         {/* Carousel */}
         <div className="relative mb-6">
           <div 
-            className="overflow-hidden rounded-2xl relative cursor-grab active:cursor-grabbing"
+            className="overflow-hidden rounded-2xl relative cursor-grab active:cursor-grabbing aspect-square"
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}
           >
-            <img src={carouselImages[currentSlide]} alt={`Prova social ${currentSlide + 1}`} className="w-full transition-opacity duration-500" />
+            <img src={carouselImages[currentSlide]} alt={`Prova social ${currentSlide + 1}`} className="w-full h-full object-cover transition-opacity duration-500" />
             {/* Swipe indicator */}
             <div className="absolute bottom-3 left-1/2 -translate-x-1/2 bg-black/40 text-white text-xs px-3 py-1 rounded-full flex items-center gap-1">
               <ChevronLeft className="w-3 h-3" />
