@@ -15,6 +15,10 @@ import planos from "@/assets/planos.jpg";
 import planos3 from "@/assets/planos-3.jpg";
 import planosNovo from "@/assets/planos-novo.jpg";
 import selosGarantia from "@/assets/selos-garantia.png";
+import perfilRafaela from "@/assets/perfil-rafaela.jpg";
+import perfilLuana from "@/assets/perfil-luana.jpg";
+import perfilAndressa from "@/assets/perfil-andressa.jpg";
+import perfilBeatriz from "@/assets/perfil-beatriz.jpg";
 const Quiz20 = () => {
   const {
     data
@@ -47,24 +51,28 @@ const Quiz20 = () => {
     window.open("https://pay.kiwify.com.br/seu-link", "_blank");
   };
   const reviews = [{
-    name: "Juliana Medeiros",
-    avatar: "J",
-    text: "Já eliminei 8kg em menos de 30 dias, resultado que nunca consegui com dietas! 😍",
+    name: "Rafaela Nascimento",
+    location: "Cianorte, PR",
+    avatar: perfilRafaela,
+    text: "Muito bom! Recomendo, meu apetite diminuiu muito e já perdi 5 kg nos últimos 11 dias.",
     rating: 5
   }, {
-    name: "APROVADO",
-    avatar: "A",
-    text: "Super recomendo! Meu marido nem acredita na minha transformação 🔥",
+    name: "Luana Dias",
+    location: "Betim, MG",
+    avatar: perfilLuana,
+    text: "Recomendo muito. estou usando tem 2 semanas e estou com muito menos vontade de comer besteiras, perdi peso e desinchei bastante! obrigada!! 🥰🥰",
     rating: 5
   }, {
-    name: "RECOMENDADÍSSIMO",
-    avatar: "R",
-    text: "Já tinha desistido de emagrecer... Esse protocolo mudou minha vida! 😭❤️",
+    name: "Andressa Soares",
+    location: "Piracaia, SP",
+    avatar: perfilAndressa,
+    text: "Oiii, estou tomando a 5 dias e os resultados já estão aparecendo, meu marido até me perguntou o que eu estou fazendo, simplesmente MARAVILHOSOOOOO 😍😍",
     rating: 5
   }, {
-    name: "MARAVILHA",
-    avatar: "M",
-    text: "3 semanas e já estou usando roupas que não cabiam há anos!",
+    name: "Beatriz Mattos",
+    location: "São Paulo, SP",
+    avatar: perfilBeatriz,
+    text: "Muito bomm! baratinho e funciona!",
     rating: 5
   }];
   const benefits = [{
@@ -338,13 +346,12 @@ const Quiz20 = () => {
 
         {/* Reviews Section */}
         <div className="space-y-3 mb-8">
-          {reviews.map((review, index) => <div key={index} className="bg-white rounded-xl p-4">
+          {reviews.map((review, index) => <div key={index} className="rounded-xl p-4 border" style={{ backgroundColor: '#f5f5f5', borderColor: '#d1d5db' }}>
               <div className="flex items-center gap-3 mb-2">
-                <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold">
-                  {review.avatar}
-                </div>
+                <img src={review.avatar} alt={review.name} className="w-10 h-10 rounded-full object-cover" />
                 <div>
                   <p className="font-semibold text-sm text-funnel-title">{review.name}</p>
+                  <p className="text-xs text-gray-500">{review.location}</p>
                   <div className="flex">
                     {[...Array(review.rating)].map((_, i) => <Star key={i} className="w-3 h-3 fill-yellow-400 text-yellow-400" />)}
                   </div>
