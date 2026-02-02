@@ -33,7 +33,7 @@ const Quiz9 = () => {
   };
 
   return (
-    <QuizLayout progress={75}>
+    <QuizLayout progress={45}>
       <div className="text-center mb-2 animate-fade-in-up">
         <h1 className="text-xl font-bold text-funnel-title">
           Quais desses benefícios <span className="text-funnel-accent">você gostaria de ter?</span>

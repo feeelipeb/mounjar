@@ -11,7 +11,7 @@ const Quiz8 = () => {
   };
 
   return (
-    <QuizLayout progress={70}>
+    <QuizLayout progress={40}>
       <div className="text-center mb-6 animate-fade-in-up">
         <h1 className="text-xl font-bold text-funnel-title">Nosso protocolo</h1>
         <h2 className="text-xl font-bold text-funnel-accent">Resolve isso para você!</h2>

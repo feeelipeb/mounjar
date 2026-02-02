@@ -20,7 +20,7 @@ const Quiz14 = () => {
   };
 
   return (
-    <QuizLayout progress={60}>
+    <QuizLayout progress={70}>
       <div className="text-center mb-2 animate-fade-in-up">
         <h1 className="text-xl font-bold text-funnel-title">
           Como é o seu dia a dia?

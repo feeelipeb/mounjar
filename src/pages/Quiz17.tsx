@@ -79,8 +79,13 @@ const Quiz17 = () => {
     <div className="min-h-screen bg-background flex flex-col items-center px-4 py-6">
       <div className="w-full max-w-md mx-auto">
         {/* Logo */}
-        <div className="flex justify-center mb-6">
+        <div className="flex justify-center mb-4">
           <img src={logo} alt="Mounjaro de Pobre" className="h-16 w-auto" />
+        </div>
+
+        {/* Header Progress Bar */}
+        <div className="w-full h-2 bg-gray-200 rounded-full overflow-hidden mb-6">
+          <div className="h-full rounded-full" style={{ width: '85%', backgroundColor: '#1B8B4B' }} />
         </div>
 
         {/* Title */}

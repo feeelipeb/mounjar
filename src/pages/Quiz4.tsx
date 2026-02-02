@@ -19,7 +19,7 @@ const Quiz4 = () => {
   };
 
   return (
-    <QuizLayout progress={70}>
+    <QuizLayout progress={20}>
       <div className="text-center mb-8 animate-fade-in-up">
         <h1 className="text-xl md:text-2xl font-bold text-funnel-title">
           Qual seu nome?

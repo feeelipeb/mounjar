@@ -23,7 +23,7 @@ const Quiz12 = () => {
   };
 
   return (
-    <QuizLayout progress={50}>
+    <QuizLayout progress={60}>
       <div className="text-center mb-2 animate-fade-in-up">
         <h1 className="text-xl font-bold text-funnel-title">
           Qual é a sua <span className="text-funnel-accent">altura?</span>

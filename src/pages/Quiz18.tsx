@@ -37,8 +37,10 @@ const Quiz18 = () => {
           <img src={logo} alt="Mounjaro de Pobre" className="h-16 w-auto" />
         </div>
 
-        {/* Progress bar complete */}
-        <div className="w-full h-2 bg-[#1B8B4B] rounded-full mb-6" />
+        {/* Progress bar 90% */}
+        <div className="w-full h-2 bg-gray-200 rounded-full overflow-hidden mb-6">
+          <div className="h-full rounded-full" style={{ width: '90%', backgroundColor: '#1B8B4B' }} />
+        </div>
 
         {/* Header */}
         <div className="text-center mb-6 animate-fade-in-up">
