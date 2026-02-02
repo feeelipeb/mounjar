@@ -98,15 +98,15 @@ const Quiz20 = () => {
           <div className="grid grid-cols-2 gap-4 mb-4">
             <div className="flex items-center gap-2">
               <div className="flex-1 h-2 bg-gray-200 rounded-full overflow-hidden">
-                <div className="w-1/4 h-full bg-orange-500 rounded-full" />
+                <div className="w-1/4 h-full bg-red-500 rounded-full" />
               </div>
-              <div className="w-3 h-3 rounded-full border-2 border-orange-500" />
+              <div className="w-3 h-3 rounded-full border-2 border-red-500" />
             </div>
             <div className="flex items-center gap-2">
               <div className="flex-1 h-2 bg-gray-200 rounded-full overflow-hidden">
-                <div className="w-full h-full bg-primary rounded-full" />
+                <div className="w-full h-full bg-green-500 rounded-full" />
               </div>
-              <div className="w-3 h-3 rounded-full bg-primary" />
+              <div className="w-3 h-3 rounded-full bg-green-500" />
             </div>
           </div>
 
