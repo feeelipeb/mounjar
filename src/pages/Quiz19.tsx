@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import QuizLayout from "@/components/funnel/QuizLayout";
 import { useFunnel } from "@/contexts/FunnelContext";
-import bodyEmForma from "@/assets/body-em-forma.png";
-import bodyNatural from "@/assets/body-natural.png";
+import bodyEmForma from "@/assets/body-fit.png";
+import bodyNatural from "@/assets/body-nat.png";
 
 const Quiz19 = () => {
   const navigate = useNavigate();
