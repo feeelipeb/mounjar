@@ -329,10 +329,7 @@ const Quiz20 = () => {
             <strong>A DECISÃO MAIS FÁCIL E SEM RISCO DA SUA VIDA</strong>
           </p>
           <p className="text-xs text-gray-500 mb-4">
-            Nós confiamos tanto no poder do método que oferecemos garantia de 30 dias:
-            Você e a única pessoa que tem a ver tudo, colocar em prática, e se não gostar por
-            algum motivo, é só me chamar no suporte e eu devolvo cada centavo que você
-            pagou. Você tem 30 dias de Garantia.
+            Se ele não atender às suas expectativas nos primeiros 30 dias após a compra, nós reembolsaremos todo o valor que você pagou, sem fazer perguntas.
           </p>
           <p className="text-xs text-primary font-semibold mb-6">
             📲 Em caso de qualquer dúvida entre em contato pelo e-mail que retornaremos.
