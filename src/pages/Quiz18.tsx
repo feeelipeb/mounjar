@@ -30,7 +30,7 @@ const Quiz18 = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#7DD3E1] flex flex-col items-center px-4 py-6">
+    <div className="min-h-screen bg-background flex flex-col items-center px-4 py-6">
       <div className="w-full max-w-md mx-auto">
         {/* Logo */}
         <div className="flex justify-center mb-6">
@@ -43,7 +43,7 @@ const Quiz18 = () => {
         {/* Header */}
         <div className="text-center mb-6 animate-fade-in-up">
           <h1 className="text-xl font-bold text-funnel-title">
-            <span className="text-funnel-title">{data.name || "Usuário"}</span>, veja como o{" "}
+            {data.name || "Usuário"}, veja como o{" "}
             <span className="text-[#1B8B4B]">Mounjaro de Pobre</span> está transformando vidas e veja os{" "}
             <span className="text-[#1B8B4B]">resultados da nossa comunidade!</span>
           </h1>
@@ -55,83 +55,99 @@ const Quiz18 = () => {
             Índice de Massa Corporal (IMC)
           </h2>
 
-          <div className="bg-gradient-to-r from-[#E8F5E9] to-[#FFEBEE] rounded-2xl p-4">
-            <div className="flex justify-between items-start mb-2">
-              <p className="text-sm font-semibold text-funnel-title">
+          {/* IMC Card - matching reference exactly */}
+          <div className="bg-gradient-to-r from-[#4CAF50] via-[#8BC34A] via-[#FFEB3B] via-[#FF9800] to-[#F44336] rounded-2xl p-4 relative">
+            <div className="flex justify-between items-start mb-3">
+              <p className="text-sm font-bold text-white">
                 Seu IMC é: {imcFormatted}
               </p>
-              <div className="text-right">
-                <span className="text-xs text-yellow-600 flex items-center gap-1">
+              <div className="text-right flex flex-col items-end gap-1">
+                <span className="text-xs text-[#FF6B00] font-semibold flex items-center gap-1">
                   ⚠️ Zona de Alerta
                 </span>
-                <span className="text-xs bg-[#FFEBEE] px-2 py-1 rounded text-funnel-subtitle">
+                <span className="text-xs bg-white px-3 py-1 rounded-md text-gray-700 font-medium border border-gray-200">
                   Você está aqui
                 </span>
               </div>
             </div>
 
             {/* IMC Slider */}
-            <div className="relative mt-4 mb-2">
-              <div className="h-2 bg-gradient-to-r from-[#64B5F6] via-[#81C784] to-[#E57373] rounded-full" />
+            <div className="relative mt-2 mb-3">
+              <div className="h-3 bg-gradient-to-r from-[#4CAF50] via-[#FFEB3B] to-[#F44336] rounded-full" />
               <div 
-                className="absolute top-1/2 -translate-y-1/2 w-4 h-4 bg-white rounded-full border-2 border-gray-400 shadow-md"
-                style={{ left: `${Math.min(imcPosition, 95)}%` }}
+                className="absolute top-1/2 -translate-y-1/2 w-5 h-5 bg-white rounded-full border-2 border-gray-300 shadow-lg"
+                style={{ left: `calc(${Math.min(imcPosition, 95)}% - 10px)` }}
               />
             </div>
 
-            <div className="flex justify-between text-xs text-funnel-subtitle mt-1">
-              <span className="text-[#64B5F6]">Abaixo do peso</span>
-              <span className="text-[#81C784]">Normal</span>
-              <span className="text-[#E57373]">Sobrepeso</span>
+            <div className="flex justify-between text-xs font-semibold mt-1">
+              <span className="text-white">Abaixo do peso</span>
+              <span className="text-white">Normal</span>
+              <span className="text-white">Sobrepeso</span>
             </div>
           </div>
         </div>
 
-        {/* Alert Card 1 */}
-        <div className="bg-white rounded-2xl p-5 shadow-sm border border-gray-100 mb-4 animate-fade-in-up" style={{ animationDelay: "200ms" }}>
-          <div className="flex gap-3">
-            <span className="text-xl">ℹ️</span>
+        {/* Info Card - Light Blue Background */}
+        <div className="bg-[#E3F2FD] rounded-2xl p-5 mb-4 animate-fade-in-up" style={{ animationDelay: "200ms" }}>
+          <div className="flex gap-3 items-start">
+            <div className="w-6 h-6 rounded-full bg-[#2196F3] flex items-center justify-center flex-shrink-0 mt-0.5">
+              <span className="text-white text-xs font-bold">i</span>
+            </div>
             <div>
-              <h3 className="font-bold text-funnel-title mb-2">
+              <h3 className="font-bold text-funnel-title mb-2 text-base">
                 Seu metabolismo pode estar te sabotando sem que você perceba!
               </h3>
-              <p className="text-sm text-funnel-subtitle leading-relaxed">
+              <p className="text-sm text-gray-600 leading-relaxed">
                 Mesmo estando no peso normal, seu corpo pode estar retendo toxinas e trabalhando de forma mais lenta, dificultando a queima de gordura e deixando você com menos energia.
               </p>
             </div>
           </div>
         </div>
 
-        {/* Alert Card 2 */}
-        <div className="bg-white rounded-2xl p-5 shadow-sm border border-gray-100 mb-4 animate-fade-in-up" style={{ animationDelay: "300ms" }}>
-          <div className="flex gap-3">
-            <span className="text-xl">⚠️</span>
+        {/* Alert Card - Light Yellow Background */}
+        <div className="bg-[#FFF8E1] rounded-2xl p-5 mb-4 animate-fade-in-up" style={{ animationDelay: "300ms" }}>
+          <div className="flex gap-3 items-start">
+            <div className="w-6 h-6 flex items-center justify-center flex-shrink-0 mt-0.5">
+              <span className="text-[#FFA000] text-xl">🔔</span>
+            </div>
             <div>
-              <h3 className="font-bold text-funnel-title mb-2">
+              <h3 className="font-bold text-funnel-title mb-3 text-base">
                 Alguns sinais de alerta:
               </h3>
-              <ul className="text-sm text-funnel-subtitle space-y-2">
-                <li>❌ Metabolismo lento e dificuldade para emagrecer mesmo comendo pouco.</li>
-                <li>❌ Cansaço constante e sensação de inchaço.</li>
-                <li>❌ Acúmulo de gordura em áreas específicas do corpo, principalmente na barriga.</li>
+              <ul className="text-sm text-gray-600 space-y-2">
+                <li className="flex gap-2">
+                  <span className="text-red-500">✖</span>
+                  <span>Metabolismo lento e dificuldade para emagrecer mesmo comendo pouco.</span>
+                </li>
+                <li className="flex gap-2">
+                  <span className="text-red-500">✖</span>
+                  <span>Cansaço constante e sensação de inchaço.</span>
+                </li>
+                <li className="flex gap-2">
+                  <span className="text-red-500">✖</span>
+                  <span>Acúmulo de gordura em áreas específicas do corpo, principalmente na barriga.</span>
+                </li>
               </ul>
             </div>
           </div>
         </div>
 
-        {/* Success Card */}
-        <div className="bg-white rounded-2xl p-5 shadow-sm border border-gray-100 mb-6 animate-fade-in-up" style={{ animationDelay: "400ms" }}>
-          <div className="flex gap-3">
-            <span className="text-xl">✅</span>
+        {/* Success Card - Light Green Background */}
+        <div className="bg-[#E8F5E9] rounded-2xl p-5 mb-6 animate-fade-in-up" style={{ animationDelay: "400ms" }}>
+          <div className="flex gap-3 items-start">
+            <div className="w-6 h-6 rounded-full bg-[#4CAF50] flex items-center justify-center flex-shrink-0 mt-0.5">
+              <span className="text-white text-sm">✓</span>
+            </div>
             <div>
-              <h3 className="font-bold text-funnel-title mb-2">
+              <h3 className="font-bold text-funnel-title mb-2 text-base">
                 Com o Mounjaro de Pobre, seu corpo acelera a queima de gordura naturalmente!
               </h3>
-              <p className="text-sm text-funnel-subtitle leading-relaxed mb-2">
+              <p className="text-sm text-gray-600 leading-relaxed mb-2">
                 A combinação ideal de ingredientes pode ativar seu metabolismo, reduzir a retenção de líquidos e aumentar sua disposição.
               </p>
-              <p className="text-sm text-[#1B8B4B] font-semibold">
-                📥 Descubra agora como o Mounjaro de Pobre pode transformar seu corpo!
+              <p className="text-sm text-[#1B8B4B] font-semibold flex items-center gap-1">
+                <span>📥</span> Descubra agora como o Mounjaro de Pobre pode transformar seu corpo!
               </p>
             </div>
           </div>
