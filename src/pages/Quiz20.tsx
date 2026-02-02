@@ -292,9 +292,9 @@ const Quiz20 = () => {
         </div>
 
         {/* Pricing Card */}
-        <div className="mb-6 rounded-lg border-l-4 bg-white py-4 px-4 flex items-center justify-between shadow-sm" style={{ borderLeftColor: '#1B8B4B' }}>
+        <div className="mb-6 rounded-xl border-2 bg-white py-3 px-4 flex items-center justify-between" style={{ borderColor: '#1B8B4B' }}>
           <div className="flex items-center gap-3">
-            <div className="w-6 h-6 rounded-full border-2 flex items-center justify-center" style={{ borderColor: '#1B8B4B' }}>
+            <div className="w-7 h-7 rounded-full border-2 flex items-center justify-center" style={{ borderColor: '#1B8B4B' }}>
               <Check className="w-4 h-4" style={{ color: '#1B8B4B' }} />
             </div>
             <div>
@@ -302,9 +302,9 @@ const Quiz20 = () => {
               <p className="text-xs text-gray-500">Pagamento Único</p>
             </div>
           </div>
-          <div className="flex items-center gap-2">
-            <span className="text-xs text-white px-2 py-0.5 rounded-full" style={{ backgroundColor: '#1B8B4B' }}>70% off</span>
-            <span className="font-bold text-lg" style={{ color: '#1B8B4B' }}>R$ 37,90</span>
+          <div className="rounded-lg px-3 py-2 text-center" style={{ backgroundColor: '#e8f5ec' }}>
+            <p className="text-xs text-gray-600">70% off</p>
+            <p className="font-bold text-lg" style={{ color: '#1B8B4B' }}>R$ 37,90</p>
           </div>
         </div>
 
