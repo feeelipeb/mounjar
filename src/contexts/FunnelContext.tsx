@@ -9,6 +9,8 @@ interface FunnelData {
   weightImpact: string;
   appearance: string;
   obstacle: string;
+  benefits: string;
+  currentWeight: string;
 }
 
 interface FunnelContextType {
@@ -28,6 +30,8 @@ export const FunnelProvider = ({ children }: { children: ReactNode }) => {
     weightImpact: "",
     appearance: "",
     obstacle: "",
+    benefits: "",
+    currentWeight: "",
   });
 
   const updateData = (key: keyof FunnelData, value: string) => {
