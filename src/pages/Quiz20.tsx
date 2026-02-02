@@ -9,6 +9,7 @@ import provaAnteDepois from "@/assets/prova-antes-depois.png";
 import carrosselProva1 from "@/assets/carrossel-prova1.png";
 import carrosselProva2 from "@/assets/carrossel-prova2.png";
 import planos from "@/assets/planos.jpg";
+import planos2 from "@/assets/planos-2.jpg";
 import selosGarantia from "@/assets/selos-garantia.png";
 
 const Quiz20 = () => {
@@ -169,18 +170,8 @@ const Quiz20 = () => {
         </p>
 
         {/* Benefits List */}
-        <div className="space-y-3 mb-6">
-          {benefits.map((benefit, index) => (
-            <div key={index} className="flex items-start gap-3 bg-white border border-gray-100 rounded-xl p-3 shadow-sm">
-              <span className="text-2xl">{benefit.icon}</span>
-              <div>
-                <p className="text-sm text-gray-700">{benefit.title}</p>
-                {benefit.highlight && (
-                  <span className="text-xs font-semibold text-primary">{benefit.highlight}</span>
-                )}
-              </div>
-            </div>
-          ))}
+        <div className="mb-6">
+          <img src={planos2} alt="Lista de benefícios do plano" className="w-full rounded-2xl" />
         </div>
 
         {/* CTA Button */}
