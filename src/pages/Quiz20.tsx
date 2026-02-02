@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useRef } from "react";
 import { useFunnel } from "@/contexts/FunnelContext";
 import { Check, Star, Shield, ThumbsUp, Lock, ChevronLeft, ChevronRight } from "lucide-react";
 import logo from "@/assets/logo.webp";
@@ -8,6 +8,9 @@ import garantia30Dias from "@/assets/garantia-30-dias.png";
 import provaAnteDepois from "@/assets/prova-antes-depois.png";
 import carrosselProva1 from "@/assets/carrossel-prova1.png";
 import carrosselProva2 from "@/assets/carrossel-prova2.png";
+import prova3 from "@/assets/prova-3.jpg";
+import prova4 from "@/assets/prova-4.jpg";
+import prova5 from "@/assets/prova-5.jpg";
 import planos from "@/assets/planos.jpg";
 import selosGarantia from "@/assets/selos-garantia.png";
 const Quiz20 = () => {
@@ -16,13 +19,28 @@ const Quiz20 = () => {
   } = useFunnel();
   const name = data.name || "Você";
   const [currentSlide, setCurrentSlide] = useState(0);
-  const carouselImages = [carrosselProva1, carrosselProva2];
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentSlide(prev => (prev + 1) % carouselImages.length);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, []);
+  const carouselImages = [carrosselProva1, carrosselProva2, prova3, prova4, prova5];
+  const touchStartX = useRef(0);
+  const touchEndX = useRef(0);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    const diff = touchStartX.current - touchEndX.current;
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) {
+        setCurrentSlide(prev => (prev + 1) % carouselImages.length);
+      } else {
+        setCurrentSlide(prev => (prev - 1 + carouselImages.length) % carouselImages.length);
+      }
+    }
+  };
   const handleCTA = () => {
     window.open("https://pay.kiwify.com.br/seu-link", "_blank");
   };
@@ -234,9 +252,33 @@ const Quiz20 = () => {
 
         {/* Carousel */}
         <div className="relative mb-6">
-          <div className="overflow-hidden rounded-2xl">
+          <div 
+            className="overflow-hidden rounded-2xl relative cursor-grab active:cursor-grabbing"
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+          >
             <img src={carouselImages[currentSlide]} alt={`Prova social ${currentSlide + 1}`} className="w-full transition-opacity duration-500" />
+            {/* Swipe indicator */}
+            <div className="absolute bottom-3 left-1/2 -translate-x-1/2 bg-black/40 text-white text-xs px-3 py-1 rounded-full flex items-center gap-1">
+              <ChevronLeft className="w-3 h-3" />
+              <span>Deslize</span>
+              <ChevronRight className="w-3 h-3" />
+            </div>
           </div>
+          {/* Navigation Arrows */}
+          <button 
+            onClick={() => setCurrentSlide(prev => (prev - 1 + carouselImages.length) % carouselImages.length)}
+            className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 bg-white/80 rounded-full flex items-center justify-center shadow-md"
+          >
+            <ChevronLeft className="w-5 h-5 text-gray-700" />
+          </button>
+          <button 
+            onClick={() => setCurrentSlide(prev => (prev + 1) % carouselImages.length)}
+            className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 bg-white/80 rounded-full flex items-center justify-center shadow-md"
+          >
+            <ChevronRight className="w-5 h-5 text-gray-700" />
+          </button>
           {/* Carousel Dots */}
           <div className="flex justify-center gap-2 mt-3">
             {carouselImages.map((_, index) => <button key={index} onClick={() => setCurrentSlide(index)} className={`w-2 h-2 rounded-full transition-all ${currentSlide === index ? "bg-primary w-4" : "bg-gray-300"}`} />)}
