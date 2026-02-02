@@ -291,6 +291,23 @@ const Quiz20 = () => {
           <img src={planosNovo} alt="Planos disponíveis" className="w-full rounded-2xl" />
         </div>
 
+        {/* Pricing Card */}
+        <div className="mb-6 rounded-full border-l-4 bg-white py-3 px-4 flex items-center justify-between shadow-sm" style={{ borderLeftColor: '#1B8B4B' }}>
+          <div className="flex items-center gap-3">
+            <div className="w-6 h-6 rounded-full border-2 flex items-center justify-center" style={{ borderColor: '#1B8B4B' }}>
+              <Check className="w-4 h-4" style={{ color: '#1B8B4B' }} />
+            </div>
+            <div>
+              <p className="font-bold text-gray-800 text-sm">Mounjaro de Pobre</p>
+              <p className="text-xs text-gray-500">Pagamento Único</p>
+            </div>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="text-xs text-white px-2 py-0.5 rounded-full" style={{ backgroundColor: '#1B8B4B' }}>70% off</span>
+            <span className="font-bold text-lg" style={{ color: '#1B8B4B' }}>R$ 37,90</span>
+          </div>
+        </div>
+
         {/* CTA Button 2 */}
         <button onClick={handleCTA} className="w-full py-4 rounded-xl text-white font-bold text-lg shadow-lg transition-all duration-200 active:translate-y-1 mb-4" style={{
         background: "#1B8B4B",
