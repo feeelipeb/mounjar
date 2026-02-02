@@ -124,7 +124,7 @@ const Quiz20 = () => {
         </div>
 
         {/* Como funciona o Plano - Card */}
-        <div className="bg-white rounded-2xl p-5 mb-4 shadow-md border-l-4" style={{ borderLeftColor: '#1B8B4B' }}>
+        <div className="bg-white rounded-2xl p-5 mb-4 shadow-md border-2" style={{ borderColor: '#1B8B4B' }}>
           <h3 className="font-bold text-[#1a365d] flex items-center gap-2 mb-3 text-base">
             <div className="w-5 h-5 rounded-full border-2 border-[#1B8B4B] flex items-center justify-center">
               <Check className="w-3 h-3 text-[#1B8B4B]" />
@@ -140,7 +140,7 @@ const Quiz20 = () => {
         </div>
 
         {/* Seu plano inclui - Card */}
-        <div className="bg-white rounded-2xl p-5 mb-8 shadow-md border-l-4" style={{ borderLeftColor: '#1B8B4B' }}>
+        <div className="bg-white rounded-2xl p-5 mb-8 shadow-md border-2" style={{ borderColor: '#1B8B4B' }}>
           <h3 className="font-bold text-[#1a365d] flex items-center gap-2 mb-4 text-base">
             <Check className="w-5 h-5 text-gray-400" />
             Seu plano inclui:
