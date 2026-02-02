@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import FunnelHeader from "@/components/funnel/FunnelHeader";
 import AgeCard from "@/components/funnel/AgeCard";
+import { useFunnel } from "@/contexts/FunnelContext";
 
 import woman1827 from "@/assets/woman-18-27.png";
 import woman2839 from "@/assets/woman-28-39.png";
@@ -15,12 +16,12 @@ const ageOptions = [
 ];
 
 const Index = () => {
-  const [selectedAge, setSelectedAge] = useState<string | null>(null);
+  const navigate = useNavigate();
+  const { updateData } = useFunnel();
 
   const handleAgeSelect = (ageId: string) => {
-    setSelectedAge(ageId);
-    // Aqui você pode adicionar navegação para a próxima etapa
-    console.log("Idade selecionada:", ageId);
+    updateData("age", ageId);
+    navigate("/quiz1");
   };
 
   return (
