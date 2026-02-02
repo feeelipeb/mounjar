@@ -117,7 +117,7 @@ const Quiz20 = () => {
               <p className="text-xs text-gray-500">Seu metabolismo está lento, fazendo você se sentir cansada.</p>
             </div>
             <div className="flex items-start gap-2">
-              <Check className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+              <Check className="w-4 h-4 mt-0.5 flex-shrink-0" style={{ color: '#1B8B4B' }} />
               <p className="text-xs text-gray-500">Aqui, seu metabolismo estará funcionando de forma otimizada.</p>
             </div>
           </div>
