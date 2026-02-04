@@ -92,8 +92,9 @@ export default {
           to: { opacity: "1", transform: "scale(1)" },
         },
         "pulse-subtle": {
-          "0%, 100%": { transform: "scale(1)" },
-          "50%": { transform: "scale(1.02)" },
+          "0%": { transform: "scale(1)", opacity: "1" },
+          "50%": { transform: "scale(1.03)", opacity: "0.95" },
+          "100%": { transform: "scale(1)", opacity: "1" },
         },
       },
       animation: {
