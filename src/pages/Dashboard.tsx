@@ -87,6 +87,7 @@ const Dashboard = () => {
     to: new Date(),
   });
   const [calendarOpen, setCalendarOpen] = useState(false);
+  const [tempDateRange, setTempDateRange] = useState<{ from?: Date; to?: Date }>({});
   const navigate = useNavigate();
   const { toast } = useToast();
 
@@ -234,15 +235,28 @@ const Dashboard = () => {
   };
 
   const handleCustomDateSelect = (range: { from?: Date; to?: Date } | undefined) => {
-    if (range?.from) {
+    if (!range) {
+      setTempDateRange({});
+      return;
+    }
+    
+    setTempDateRange(range);
+    
+    // Só fecha e aplica quando ambas as datas estão selecionadas
+    if (range.from && range.to) {
       setCustomDateRange({
         from: range.from,
-        to: range.to || range.from,
+        to: range.to,
       });
-      if (range.to) {
-        setCalendarOpen(false);
-      }
+      setDateFilter('custom');
+      setCalendarOpen(false);
+      setTempDateRange({});
     }
+  };
+
+  const openCustomCalendar = () => {
+    setTempDateRange({});
+    setCalendarOpen(true);
   };
 
   const getFilterLabel = () => {
@@ -346,7 +360,7 @@ const Dashboard = () => {
                   <Button 
                     variant={dateFilter === 'custom' ? 'default' : 'ghost'} 
                     size="sm"
-                    onClick={() => setDateFilter('custom')}
+                    onClick={openCustomCalendar}
                   >
                     <CalendarIcon className="h-4 w-4 mr-1" />
                     {dateFilter === 'custom' ? getFilterLabel() : 'Período'}
@@ -355,11 +369,12 @@ const Dashboard = () => {
                 <PopoverContent className="w-auto p-0" align="end">
                   <Calendar
                     mode="range"
-                    selected={{ from: customDateRange.from, to: customDateRange.to }}
+                    selected={tempDateRange.from ? { from: tempDateRange.from, to: tempDateRange.to } : undefined}
                     onSelect={handleCustomDateSelect}
                     numberOfMonths={2}
                     locale={ptBR}
                     className={cn("p-3 pointer-events-auto")}
+                    defaultMonth={subDays(new Date(), 30)}
                   />
                 </PopoverContent>
               </Popover>
