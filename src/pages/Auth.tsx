@@ -8,6 +8,27 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { useToast } from '@/hooks/use-toast';
 import { Lock, Mail } from 'lucide-react';
 
+// Map error messages to user-friendly messages
+const getAuthErrorMessage = (error: Error): string => {
+  const errorMessage = error.message.toLowerCase();
+  
+  if (errorMessage.includes('invalid login credentials') || errorMessage.includes('invalid_credentials')) {
+    return 'Email ou senha incorretos. Verifique suas credenciais e tente novamente.';
+  }
+  if (errorMessage.includes('email not confirmed')) {
+    return 'Por favor, confirme seu email antes de fazer login.';
+  }
+  if (errorMessage.includes('too many requests') || errorMessage.includes('rate limit')) {
+    return 'Muitas tentativas de login. Aguarde alguns minutos e tente novamente.';
+  }
+  if (errorMessage.includes('network') || errorMessage.includes('fetch')) {
+    return 'Erro de conexão. Verifique sua internet e tente novamente.';
+  }
+  
+  // Generic fallback - don't expose raw error
+  return 'Não foi possível fazer login. Tente novamente mais tarde.';
+};
+
 const Auth = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -43,7 +64,7 @@ const Auth = () => {
     if (error) {
       toast({
         title: 'Erro ao fazer login',
-        description: error.message,
+        description: getAuthErrorMessage(error),
         variant: 'destructive',
       });
     }
