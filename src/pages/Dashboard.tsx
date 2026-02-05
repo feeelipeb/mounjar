@@ -24,6 +24,11 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 
+// Generic error message for database operations
+const getGenericErrorMessage = (operation: string): string => {
+  return `Não foi possível ${operation}. Tente novamente mais tarde.`;
+};
+
 type DateFilter = 'today' | 'yesterday' | 'last7days' | 'custom';
 
 interface PageStats {
@@ -141,7 +146,10 @@ const Dashboard = () => {
       .lte('created_at', to.toISOString());
 
     if (pageViewsError) {
-      console.error('Error fetching page views:', pageViewsError);
+      // Log error details only in development
+      if (import.meta.env.DEV) {
+        console.error('Error fetching page views:', pageViewsError);
+      }
     }
 
     // Buscar button clicks
@@ -152,7 +160,10 @@ const Dashboard = () => {
       .lte('created_at', to.toISOString());
 
     if (buttonClicksError) {
-      console.error('Error fetching button clicks:', buttonClicksError);
+      // Log error details only in development
+      if (import.meta.env.DEV) {
+        console.error('Error fetching button clicks:', buttonClicksError);
+      }
     }
 
     // Processar page views
@@ -281,7 +292,7 @@ const Dashboard = () => {
     if (pageViewsError) {
       toast({
         title: 'Erro ao resetar page views',
-        description: pageViewsError.message,
+        description: getGenericErrorMessage('resetar visualizações'),
         variant: 'destructive',
       });
     }
@@ -295,7 +306,7 @@ const Dashboard = () => {
     if (buttonClicksError) {
       toast({
         title: 'Erro ao resetar button clicks',
-        description: buttonClicksError.message,
+        description: getGenericErrorMessage('resetar cliques'),
         variant: 'destructive',
       });
     }
