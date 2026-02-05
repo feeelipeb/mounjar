@@ -4,9 +4,14 @@ import { supabase } from '@/integrations/supabase/client';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
+import { Calendar } from '@/components/ui/calendar';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell } from 'recharts';
-import { LogOut, Users, TrendingDown, RefreshCw, MousePointer, Trash2 } from 'lucide-react';
+import { LogOut, Users, TrendingDown, RefreshCw, MousePointer, Trash2, CalendarIcon } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import { format, startOfDay, endOfDay, subDays } from 'date-fns';
+import { ptBR } from 'date-fns/locale';
+import { cn } from '@/lib/utils';
 import {
   AlertDialog,
   AlertDialogAction,
@@ -18,6 +23,8 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
+
+type DateFilter = 'today' | 'yesterday' | 'last7days' | 'custom';
 
 interface PageStats {
   page: string;
@@ -36,6 +43,11 @@ interface ButtonClickStats {
   label: string;
   count: number;
   uniqueVisitors: number;
+}
+
+interface DateRange {
+  from: Date;
+  to: Date;
 }
 
 const FUNNEL_PAGES = [
@@ -69,6 +81,12 @@ const Dashboard = () => {
   const [loading, setLoading] = useState(true);
   const [totalVisitors, setTotalVisitors] = useState(0);
   const [totalButtonClicks, setTotalButtonClicks] = useState(0);
+  const [dateFilter, setDateFilter] = useState<DateFilter>('last7days');
+  const [customDateRange, setCustomDateRange] = useState<DateRange>({
+    from: subDays(new Date(), 7),
+    to: new Date(),
+  });
+  const [calendarOpen, setCalendarOpen] = useState(false);
   const navigate = useNavigate();
   const { toast } = useToast();
 
@@ -83,20 +101,43 @@ const Dashboard = () => {
       if (!session) {
         navigate('/auth');
       } else {
-        fetchStats();
+        fetchStats(dateFilter, customDateRange);
       }
     });
 
     return () => subscription.unsubscribe();
   }, [navigate]);
 
-  const fetchStats = async () => {
+  useEffect(() => {
+    fetchStats(dateFilter, customDateRange);
+  }, [dateFilter, customDateRange]);
+
+  const getDateRange = (filter: DateFilter, custom: DateRange): DateRange => {
+    const now = new Date();
+    switch (filter) {
+      case 'today':
+        return { from: startOfDay(now), to: endOfDay(now) };
+      case 'yesterday':
+        const yesterday = subDays(now, 1);
+        return { from: startOfDay(yesterday), to: endOfDay(yesterday) };
+      case 'last7days':
+        return { from: startOfDay(subDays(now, 7)), to: endOfDay(now) };
+      case 'custom':
+        return { from: startOfDay(custom.from), to: endOfDay(custom.to) };
+    }
+  };
+
+  const fetchStats = async (filter: DateFilter, custom: DateRange) => {
     setLoading(true);
+    
+    const { from, to } = getDateRange(filter, custom);
 
     // Buscar page views
     const { data: pageViewsData, error: pageViewsError } = await supabase
       .from('page_views')
-      .select('page_path, visitor_id');
+      .select('page_path, visitor_id, created_at')
+      .gte('created_at', from.toISOString())
+      .lte('created_at', to.toISOString());
 
     if (pageViewsError) {
       console.error('Error fetching page views:', pageViewsError);
@@ -105,7 +146,9 @@ const Dashboard = () => {
     // Buscar button clicks
     const { data: buttonClicksData, error: buttonClicksError } = await supabase
       .from('button_clicks')
-      .select('button_id, button_label, visitor_id');
+      .select('button_id, button_label, visitor_id, created_at')
+      .gte('created_at', from.toISOString())
+      .lte('created_at', to.toISOString());
 
     if (buttonClicksError) {
       console.error('Error fetching button clicks:', buttonClicksError);
@@ -186,6 +229,32 @@ const Dashboard = () => {
     setLoading(false);
   };
 
+  const handleDateFilterChange = (filter: DateFilter) => {
+    setDateFilter(filter);
+  };
+
+  const handleCustomDateSelect = (range: { from?: Date; to?: Date } | undefined) => {
+    if (range?.from) {
+      setCustomDateRange({
+        from: range.from,
+        to: range.to || range.from,
+      });
+      if (range.to) {
+        setCalendarOpen(false);
+      }
+    }
+  };
+
+  const getFilterLabel = () => {
+    switch (dateFilter) {
+      case 'today': return 'Hoje';
+      case 'yesterday': return 'Ontem';
+      case 'last7days': return 'Últimos 7 dias';
+      case 'custom': 
+        return `${format(customDateRange.from, 'dd/MM', { locale: ptBR })} - ${format(customDateRange.to, 'dd/MM', { locale: ptBR })}`;
+    }
+  };
+
   const handleReset = async () => {
     setLoading(true);
     
@@ -224,7 +293,7 @@ const Dashboard = () => {
       });
     }
 
-    fetchStats();
+    fetchStats(dateFilter, customDateRange);
   };
 
   const handleLogout = async () => {
@@ -249,7 +318,53 @@ const Dashboard = () => {
             <p className="text-muted-foreground">Análise do funil de conversão</p>
           </div>
           <div className="flex gap-2 flex-wrap">
-            <Button variant="outline" onClick={fetchStats} disabled={loading}>
+            {/* Filtros de Data */}
+            <div className="flex gap-1 bg-muted rounded-lg p-1">
+              <Button 
+                variant={dateFilter === 'today' ? 'default' : 'ghost'} 
+                size="sm"
+                onClick={() => handleDateFilterChange('today')}
+              >
+                Hoje
+              </Button>
+              <Button 
+                variant={dateFilter === 'yesterday' ? 'default' : 'ghost'} 
+                size="sm"
+                onClick={() => handleDateFilterChange('yesterday')}
+              >
+                Ontem
+              </Button>
+              <Button 
+                variant={dateFilter === 'last7days' ? 'default' : 'ghost'} 
+                size="sm"
+                onClick={() => handleDateFilterChange('last7days')}
+              >
+                7 dias
+              </Button>
+              <Popover open={calendarOpen} onOpenChange={setCalendarOpen}>
+                <PopoverTrigger asChild>
+                  <Button 
+                    variant={dateFilter === 'custom' ? 'default' : 'ghost'} 
+                    size="sm"
+                    onClick={() => setDateFilter('custom')}
+                  >
+                    <CalendarIcon className="h-4 w-4 mr-1" />
+                    {dateFilter === 'custom' ? getFilterLabel() : 'Período'}
+                  </Button>
+                </PopoverTrigger>
+                <PopoverContent className="w-auto p-0" align="end">
+                  <Calendar
+                    mode="range"
+                    selected={{ from: customDateRange.from, to: customDateRange.to }}
+                    onSelect={handleCustomDateSelect}
+                    numberOfMonths={2}
+                    locale={ptBR}
+                    className={cn("p-3 pointer-events-auto")}
+                  />
+                </PopoverContent>
+              </Popover>
+            </div>
+            <Button variant="outline" onClick={() => fetchStats(dateFilter, customDateRange)} disabled={loading}>
               <RefreshCw className={`h-4 w-4 mr-2 ${loading ? 'animate-spin' : ''}`} />
               Atualizar
             </Button>
