@@ -50,8 +50,8 @@ const Quiz20 = () => {
     }
   };
   const handleCTA = () => {
-    trackButtonClick('cta_checkout', 'Quero Começar Hoje!', 'https://go.perfectpay.com.br/PPU38CQ753B?upsell=true');
-    window.open("https://go.perfectpay.com.br/PPU38CQ753B?upsell=true", "_blank");
+    trackButtonClick('cta_checkout', 'Quero Começar Hoje!', 'https://pay.cakto.com.br/34ofwtu_624822');
+    window.open("https://pay.cakto.com.br/34ofwtu_624822", "_blank");
   };
   const reviews = [{
     name: "Rafaela Nascimento",
