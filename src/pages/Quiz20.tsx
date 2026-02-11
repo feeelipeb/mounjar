@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useFunnel } from "@/contexts/FunnelContext";
 import { useButtonTracking } from "@/hooks/useButtonTracking";
 import { Check, Star, Shield, ThumbsUp, Lock, ChevronLeft, ChevronRight } from "lucide-react";
@@ -20,6 +20,7 @@ import perfilRafaela from "@/assets/perfil-rafaela.jpg";
 import perfilLuana from "@/assets/perfil-luana.jpg";
 import perfilAndressa from "@/assets/perfil-andressa.jpg";
 import perfilBeatriz from "@/assets/perfil-beatriz.jpg";
+import draFernanda from "@/assets/dra-fernanda.png";
 const Quiz20 = () => {
   const {
     data
@@ -30,6 +31,24 @@ const Quiz20 = () => {
   const carouselImages = [carrosselProva1, carrosselProva2, prova3, prova4, prova5];
   const touchStartX = useRef(0);
   const touchEndX = useRef(0);
+  const [countdown, setCountdown] = useState(6 * 60); // 6 minutes in seconds
+
+  useEffect(() => {
+    if (countdown <= 0) {
+      window.open("https://pay.cakto.com.br/34ofwtu_624822", "_blank");
+      return;
+    }
+    const timer = setInterval(() => {
+      setCountdown(prev => prev - 1);
+    }, 1000);
+    return () => clearInterval(timer);
+  }, [countdown]);
+
+  const formatCountdown = (seconds: number) => {
+    const m = Math.floor(seconds / 60).toString().padStart(2, '0');
+    const s = (seconds % 60).toString().padStart(2, '0');
+    return `${m}:${s}`;
+  };
 
   const handleTouchStart = (e: React.TouchEvent) => {
     touchStartX.current = e.touches[0].clientX;
@@ -368,6 +387,32 @@ const Quiz20 = () => {
           <p className="text-xs text-primary font-semibold mb-6">
             📲 Basta enviar um e-mail para o suporte em mounjarodepobre@gmail.com
           </p>
+        </div>
+
+        {/* Dra. Fernanda Section */}
+        <div className="flex flex-col items-center mb-8">
+          <div className="w-64 mb-4">
+            <img src={draFernanda} alt="Dra. Fernanda Santos" className="w-full rounded-2xl" />
+          </div>
+
+          <div className="rounded-xl px-5 py-3 mb-4 text-center" style={{ backgroundColor: '#e8f5ec' }}>
+            <p className="text-sm font-semibold text-gray-800">
+              Protocolo gerado por: <strong>Fernanda Santos</strong>
+            </p>
+            <p className="text-xs text-gray-600 mt-1">
+              Nutricionista: CRN SP 10-9552
+            </p>
+          </div>
+
+          <div className="rounded-xl px-5 py-3 text-center" style={{ backgroundColor: '#fee2e2' }}>
+            <p className="text-sm text-gray-800">
+              Sua vaga está disponível por{" "}
+              <span className="font-bold" style={{ color: '#dc2626' }}>
+                {formatCountdown(countdown)} minutos
+              </span>
+              , após isso a página será apagada para dar espaço para novas consultas!
+            </p>
+          </div>
         </div>
 
         {/* Reviews Section */}
