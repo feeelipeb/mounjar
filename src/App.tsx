@@ -28,6 +28,7 @@ import Quiz19 from "./pages/Quiz19";
 import Quiz20 from "./pages/Quiz20";
 import Auth from "./pages/Auth";
 import Dashboard from "./pages/Dashboard";
+import Presell from "./pages/Presell";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -69,6 +70,7 @@ const App = () => (
               <Route path="/quiz20" element={<Quiz20 />} />
               <Route path="/auth" element={<Auth />} />
               <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/presell" element={<Presell />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
