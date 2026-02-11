@@ -258,6 +258,28 @@ const Quiz20 = () => {
           </p>
         </div>
 
+        {/* Video Testimonials */}
+        <div className="grid grid-cols-2 gap-3 mb-6">
+          <div className="rounded-2xl overflow-hidden aspect-[9/16] bg-gray-100">
+            <iframe
+              src="https://www.youtube.com/embed/ZUFTwMp5F5c?rel=0"
+              title="Depoimento 1"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              className="w-full h-full"
+            />
+          </div>
+          <div className="rounded-2xl overflow-hidden aspect-[9/16] bg-gray-100">
+            <iframe
+              src="https://www.youtube.com/embed/EudZGrEhmQg?rel=0"
+              title="Depoimento 2"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              className="w-full h-full"
+            />
+          </div>
+        </div>
+
         {/* Carousel */}
         <div className="relative mb-6">
           <div 
