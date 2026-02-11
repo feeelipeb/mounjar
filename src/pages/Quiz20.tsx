@@ -339,6 +339,35 @@ const Quiz20 = () => {
           <img src={provaAnteDepois} alt="Transformação antes e depois" className="w-full rounded-2xl" />
         </div>
 
+        {/* Profile Card */}
+        <div className="mb-6">
+          <h2 className="text-xl font-bold text-center text-funnel-title mb-4">Seu perfil:</h2>
+          <div className="grid grid-cols-2 gap-3">
+            <div className="bg-white rounded-2xl p-4 border border-gray-100">
+              <span className="text-2xl mb-1 block">🧠</span>
+              <p className="text-sm font-semibold text-gray-500">IMC</p>
+              <p className="text-base font-bold text-funnel-title">24,8</p>
+            </div>
+            <div className="bg-white rounded-2xl p-4 border border-gray-100">
+              <span className="text-2xl mb-1 block">🎯</span>
+              <p className="text-sm font-semibold text-gray-500">Área Alvo</p>
+              <p className="text-base font-bold text-funnel-title">
+                {{"culotes":"Culotes","coxas":"Coxas","abdomen":"Abdômen","gluteos":"Glúteos","bracos":"Braços"}[data.targetArea] || "Abdômen"}
+              </p>
+            </div>
+            <div className="bg-white rounded-2xl p-4 border border-gray-100">
+              <span className="text-2xl mb-1 block">⚖️</span>
+              <p className="text-sm font-semibold text-gray-500">Peso atual</p>
+              <p className="text-base font-bold text-funnel-title">{data.currentWeight ? `${data.currentWeight}kg` : "70kg"}</p>
+            </div>
+            <div className="bg-white rounded-2xl p-4 border border-gray-100">
+              <span className="text-2xl mb-1 block">🏆</span>
+              <p className="text-sm font-semibold text-gray-500">Meta</p>
+              <p className="text-base font-bold text-funnel-title">{data.goalWeight ? `${data.goalWeight}kg` : "60kg"}</p>
+            </div>
+          </div>
+        </div>
+
         {/* Plans Image */}
         <div className="mb-6">
           <img src={planosNovo} alt="Planos disponíveis" className="w-full rounded-2xl" />
