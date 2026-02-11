@@ -47,7 +47,8 @@ const App = () => (
         <BrowserRouter>
           <PageTracker>
             <Routes>
-              <Route path="/" element={<Index />} />
+              <Route path="/" element={<Presell />} />
+              <Route path="/quiz0" element={<Index />} />
               <Route path="/quiz1" element={<Quiz1 />} />
               <Route path="/quiz2" element={<Quiz2 />} />
               <Route path="/quiz3" element={<Quiz3 />} />
@@ -70,7 +71,6 @@ const App = () => (
               <Route path="/quiz20" element={<Quiz20 />} />
               <Route path="/auth" element={<Auth />} />
               <Route path="/dashboard" element={<Dashboard />} />
-              <Route path="/presell" element={<Presell />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>

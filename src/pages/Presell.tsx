@@ -10,8 +10,8 @@ const Presell = () => {
   const { trackButtonClick } = useButtonTracking();
 
   const handleStart = () => {
-    trackButtonClick('presell_start', 'Começar o Teste', '/');
-    navigate('/');
+    trackButtonClick('presell_start', 'Começar o Teste', '/quiz0');
+    navigate('/quiz0');
   };
 
   return (
