@@ -432,6 +432,30 @@ const Quiz20 = () => {
             </div>)}
         </div>
 
+        {/* FAQ Section */}
+        <div className="mb-8">
+          <h2 className="text-xl font-bold text-center text-funnel-title mb-4">FAQ:</h2>
+          <div className="divide-y divide-gray-200 border-t border-b border-gray-200">
+            {[
+              { q: "Estou amamentando posso tomar?", a: "Lactantes só podem consumir se o bebê tiver mais de 6 meses. Gestantes não é recomendado." },
+              { q: "Sou hipertenso posso tomar?", a: "Sim, terá as instruções de como ser consumido por pessoas com pressão alta dentro do app." },
+              { q: "Em quanto tempo vejo os resultados?", a: "Os resultados podem variar de pessoa pra pessoa, mas geralmente quando consumido da maneira certa os resultados são notados na primeira semana de uso." },
+              { q: "Tem efeito colateral?", a: "Embora seja composto por ingredientes 100% Naturais, pode ocasionar dores de cabeça e aumento das idas ao banheiro na primeira semana de uso." },
+              { q: "Tenho que tomar todos os dias?", a: "Sim, o Mounjaro de Pobre deve ser consumido todos os dias como parte de uma rotina saudável." },
+              { q: "Tem gosto ruim?", a: "Não! A fórmula foi desenvolvida para ter um sabor agradável e natural, podendo ser consumido diariamente sem desconforto." },
+              { q: "O site é seguro?", a: "Sim, o site consta cnpj ativo e sendo a 3ª maior empresa de pagamentos digitais do Brasil com nota máxima no Reclame Aqui. CNPJ: 52.328.926/0001-04." },
+            ].map((item, i) => (
+              <details key={i} className="group">
+                <summary className="flex items-center justify-between py-4 cursor-pointer text-sm font-semibold text-funnel-title">
+                  {item.q}
+                  <ChevronRight className="w-4 h-4 text-gray-400 transition-transform group-open:rotate-90" />
+                </summary>
+                <p className="text-sm text-gray-600 pb-4 pr-6">{item.a}</p>
+              </details>
+            ))}
+          </div>
+        </div>
+
         {/* Final CTA */}
         <button onClick={handleCTA} className="w-full py-4 rounded-xl text-white font-bold text-lg shadow-lg transition-all duration-200 active:translate-y-1 animate-pulse-subtle" style={{
         background: "#1B8B4B",
