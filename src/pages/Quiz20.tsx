@@ -200,7 +200,7 @@ const Quiz20 = () => {
           <h2 className="text-xl font-bold text-center text-funnel-title mb-4">Seu perfil:</h2>
           <div className="grid grid-cols-2 gap-3">
             <div className="bg-white rounded-2xl p-4 border border-gray-100">
-              <span className="text-2xl mb-1 block">🧠</span>
+              <span className="text-2xl mb-1 block">👤</span>
               <p className="text-sm font-semibold text-gray-500">IMC</p>
               <p className="text-base font-bold text-funnel-title">24,8</p>
             </div>
